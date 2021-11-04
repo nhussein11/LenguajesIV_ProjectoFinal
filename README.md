@@ -10,3 +10,9 @@ Los módulos en la aplicación serán los siguientes:
 + Un módulo que brinda la posibilidad de los efectivos de emitir correos electrónicos a sus superiores o casas centrales con los datos registrados
 + Un módulo de geolocalización donde el efectivo podrá registrar puntos en el mapa donde sucedieron las infracciones
 
+
+
+# HACK MD
+
+https://hackmd.io/@I_qMv6WISoWmyAr8YGa8VA/SkExF9WPK/edit
+
