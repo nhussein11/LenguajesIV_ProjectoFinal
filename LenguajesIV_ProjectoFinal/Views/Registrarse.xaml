@@ -1,12 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LenguajesIV_ProjectoFinal.ViewModels"
              x:Class="LenguajesIV_ProjectoFinal.Views.Registrarse">
+    <ContentPage.BindingContext>
+        <local:RegistrarseViewModel></local:RegistrarseViewModel>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Registrarse"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="25" VerticalOptions="Center"  HorizontalOptions="FillAndExpand">
+            <Image Source="ucasal_logo.jpg" WidthRequest="120" HeightRequest="120"></Image>
+            <Label Text="Datos Personales" HorizontalOptions="Center" FontSize="Medium"></Label>
+            
+            <Entry Placeholder="Nombre" Margin="0" Text="{Binding nombre}"></Entry>
+            <Entry Placeholder="Apellido" Margin="0" Text="{Binding apellido}"></Entry>
+            <Entry Placeholder="D.N.I" Keyboard="Numeric" Margin="0,0,0,30" Text="{Binding dni}"></Entry>
+            
+            <Label Text="Datos de Inicio de Sesion" HorizontalOptions="Center" FontSize="Medium"></Label>
+            
+            <Entry Placeholder="Usuario" Text="{Binding usuario}"></Entry>
+            <Entry Placeholder="Contraseña" IsPassword="True" Text="{Binding contraseña}"></Entry>
+            <Button
+                   VerticalOptions="Center"
+                Text="Registrase"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                Margin="0,20,0,0"
+                Command="{Binding RegistrarUsuarioCommand}"
+                IsEnabled="{Binding ValidarCampos}"
+                ></Button>
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ya se encuentra registrado? "></Span>
+                        <Span Text="Iniciar Sesion"  FontAttributes="Bold" TextDecorations="Underline"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
