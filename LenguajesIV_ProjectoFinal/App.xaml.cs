@@ -1,4 +1,4 @@
-﻿using LenguajesIV_ProjectoFinal.Services;
+﻿
 using LenguajesIV_ProjectoFinal.Views;
 using System;
 using Xamarin.Forms;
@@ -13,7 +13,6 @@ namespace LenguajesIV_ProjectoFinal
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 
