@@ -7,15 +7,17 @@
         <local:RegistrarseViewModel></local:RegistrarseViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Padding="25" VerticalOptions="Center"  HorizontalOptions="FillAndExpand">
             <Image Source="ucasal_logo.jpg" WidthRequest="120" HeightRequest="120"></Image>
-            <Label Text="Datos Personales" HorizontalOptions="Center" FontSize="Medium"></Label>
+                <Label Text="Datos Personales" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
             
             <Entry Placeholder="Nombre" Margin="0" Text="{Binding nombre}"></Entry>
             <Entry Placeholder="Apellido" Margin="0" Text="{Binding apellido}"></Entry>
-            <Entry Placeholder="D.N.I" Keyboard="Numeric" Margin="0,0,0,30" Text="{Binding dni}"></Entry>
+            <!-- Aca pone como placeholder 0 en vez de "D.N.I" -->
+            <Entry Placeholder="D.N.I" Keyboard="Numeric" Margin="0,0,0,30" Text="{Binding dni}"></Entry> 
             
-            <Label Text="Datos de Inicio de Sesion" HorizontalOptions="Center" FontSize="Medium"></Label>
+            <Label Text="Datos de Inicio de Sesion" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
             
             <Entry Placeholder="Usuario" Text="{Binding usuario}"></Entry>
             <Entry Placeholder="Contraseña" IsPassword="True" Text="{Binding contraseña}"></Entry>
@@ -40,5 +42,6 @@
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
