@@ -13,7 +13,7 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
         public ICommand RegistrarUsuarioCommand => new Command(Registrar_Usuario);
         public string nombre { get ;set;}
         public string apellido { get; set; }
-        public int dni { get; set; }
+        public string dni { get; set; }
         public string usuario { get; set; }
         public string contraseña { get; set; }
         public bool ValidarCampos()
@@ -24,7 +24,7 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
                 && !string.IsNullOrEmpty(nombre)
                 && apellido.Length > 0
                 && !string.IsNullOrEmpty(apellido)
-                && dni > 10000000
+                && Convert.ToInt32(dni) > 10000000
                 && usuario.Length > 0
                 && !string.IsNullOrEmpty(usuario)
                 && contraseña.Length > 0
@@ -46,6 +46,7 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
                 if (this.ValidarRegistro())
                 {
                     //Guardar nuevo registro en la bd
+                    await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
                 }
                 else
                 {
