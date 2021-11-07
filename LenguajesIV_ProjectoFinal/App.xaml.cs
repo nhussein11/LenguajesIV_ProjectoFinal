@@ -1,10 +1,12 @@
 ﻿
 using LenguajesIV_ProjectoFinal.Services;
+﻿using System.IO;
 using LenguajesIV_ProjectoFinal.Views;
 using System;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using LenguajesIV_ProjectoFinal.Services;
 
 namespace LenguajesIV_ProjectoFinal
 {
@@ -20,9 +22,9 @@ namespace LenguajesIV_ProjectoFinal
         public static SQLiteHelper SQLiteDB
         {
             get {
-                if (db == null) {
-
-                    db = new SQLiteHelper(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Proyecto.db3"));
+                if (db==null)
+                {
+                    db = new SQLiteHelper(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Muncipalidad.db3"));
                 }
                 return db;
             }
