@@ -17,11 +17,12 @@ namespace LenguajesIV_ProjectoFinal.Models
         [MaxLength(50)]
         public string lugar_multa { get; set; } //Este creo que seria opcional, ya que lo conectamos con la tabla ubicaciones por la FK
 
-        /* extensión: SQLite-Net Extensions 
-            [ForeignKey(typeof(Bus))]
-            public int BusId { get; set; }
-         */
-        //FKs: cod_agente, cod_infractor, cod_vehiculo, cod_agente
+        public int cod_agente { get; set; }
+        public int cod_infractor { get; set; }
+        public int cod_vehiculo{ get; set; }
+
+
+        
 
 
     }
