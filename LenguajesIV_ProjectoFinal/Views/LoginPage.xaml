@@ -1,14 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
              x:Class="LenguajesIV_ProjectoFinal.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             xmlns:local="clr-namespace:LenguajesIV_ProjectoFinal.ViewModels"
+             Shell.FlyoutBehavior="Disabled"
+       >
+    <ContentPage.BindingContext>
+        <local:LoginViewModel></local:LoginViewModel>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+        <StackLayout Padding="25" VerticalOptions="Center"  HorizontalOptions="FillAndExpand">
+            <Image Source="ucasal_logo.jpg" WidthRequest="120" HeightRequest="120"></Image>
+            <Entry Placeholder="Usuario" Text="{Binding usuario}"></Entry>
+            <Entry Placeholder="Contraseña" IsPassword="True" Text="{Binding contraseña}"></Entry>
+            <Button VerticalOptions="Center"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                Margin="0,20,0,0" Text="Inciar Sesion" Command="{Binding IniciarSesionCommand}"/>
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Todavia no esta registrado? "></Span>
+                        <Span Text="Registrarse"  FontAttributes="Bold" TextDecorations="Underline"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Registrase"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

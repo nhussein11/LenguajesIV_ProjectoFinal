@@ -17,5 +17,11 @@ namespace LenguajesIV_ProjectoFinal.Views
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
+
+
+        private async void TapGestureRecognizer_Registrase(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"//{nameof(Registrarse)}");
+        }
     }
 }

@@ -11,10 +11,13 @@ namespace LenguajesIV_ProjectoFinal
     {
         public AppShell()
         {
-            InitializeComponent();        }
+            InitializeComponent();
+        }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
+            App.Current.Properties["usuario"] = null;
+            App.Current.Properties["isLogged"] = false;
             await Shell.Current.GoToAsync("//LoginPage");
         }
     }
