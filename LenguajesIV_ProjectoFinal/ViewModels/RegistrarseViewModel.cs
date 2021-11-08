@@ -66,6 +66,7 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
                         nombre_agente = this.nombre,
                         apellido_agente = this.apellido,
                         dni_agente = Convert.ToInt32(this.dni),
+                        email_agente=this.correo,
                         user_agente = this.usuario,
                         password_agente=this.contraseña
                     };
