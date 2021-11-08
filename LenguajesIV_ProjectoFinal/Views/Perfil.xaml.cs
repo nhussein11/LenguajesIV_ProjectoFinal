@@ -15,6 +15,15 @@ namespace LenguajesIV_ProjectoFinal.Views
         public Perfil()
         {
             InitializeComponent();
+            this.txtusuario.Text = (string)Application.Current.Properties["usuario"];
+            //Buscar datos de este usuario en la bd y cargarlos asi
+
+        }
+
+        private void GuardarDatos(object sender, EventArgs e)
+        {
+            //update en la tabla agentes, donde el usuario sea txtusuario
+            //No puede cambiar su nombre de usuario, nos hace la vida mas facil
         }
     }
 }

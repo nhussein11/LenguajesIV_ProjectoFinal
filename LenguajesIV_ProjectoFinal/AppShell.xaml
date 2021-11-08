@@ -91,10 +91,13 @@
         <ShellContent Route="Perfil" ContentTemplate="{DataTemplate local:Perfil}"/>
     </FlyoutItem>
     <FlyoutItem Title="Revisar Mapa" Icon="icon_feed.png">
-        <ShellContent Route="RevisarMapa"  ContentTemplate="{DataTemplate local:VerMapa}"/>
+        <ShellContent Route="VerMapa"  ContentTemplate="{DataTemplate local:VerMapa}"/>
     </FlyoutItem>
     <FlyoutItem Title="Comunicarse con Superior" Icon="icon_feed.png">
         <ShellContent Route="ComunicarseConSuperior"  ContentTemplate="{DataTemplate local:ComunicarseConSuperior}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Ver Multas" Icon="icon_feed.png" FlyoutItemIsVisible="False">
+        <ShellContent Route="VerMultas" ContentTemplate="{DataTemplate local:VerMultas}" />
     </FlyoutItem>
     
 

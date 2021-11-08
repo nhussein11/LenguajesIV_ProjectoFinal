@@ -15,7 +15,7 @@
             
             <Entry Placeholder="Nombre" Margin="0" Text="{Binding nombre}"></Entry>
             <Entry Placeholder="Apellido" Margin="0" Text="{Binding apellido}"></Entry>
-            <!-- Aca pone como placeholder 0 en vez de "D.N.I" -->
+            
                 <Entry Placeholder="D.N.I" Keyboard="Numeric" Margin="0,0,0,30" Text="{Binding dni}"></Entry> 
             
             <Label Text="Datos de Inicio de Sesion" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
