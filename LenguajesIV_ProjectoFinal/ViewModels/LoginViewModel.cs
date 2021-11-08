@@ -29,6 +29,7 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
             agen = await App.SQLiteDB.Get_Agentes_byUserandPassword_Async(this.usuario, this.contraseña);
             if (agen != null)
             {
+                Application.Current.Properties["DatosUsuario"] = agen;
                 return true;
             }
             else { return false; }
