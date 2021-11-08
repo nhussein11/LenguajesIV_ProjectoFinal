@@ -102,6 +102,9 @@
     <FlyoutItem Title="Ver Multas" Icon="icon_feed.png" FlyoutItemIsVisible="False">
         <ShellContent Route="VerMultas" ContentTemplate="{DataTemplate local:VerMultas}" />
     </FlyoutItem>
+    <FlyoutItem Title="TomarFoto"  FlyoutItemIsVisible="False">
+        <ShellContent Route="TomarFoto" ContentTemplate="{DataTemplate local:TomarFoto}" />
+    </FlyoutItem>
     <FlyoutItem Title="MarcarEnElMapa"  FlyoutItemIsVisible="False">
         <ShellContent Route="MarcarEnElMapa" ContentTemplate="{DataTemplate local:MarcarEnElMapa}" />
     </FlyoutItem>
