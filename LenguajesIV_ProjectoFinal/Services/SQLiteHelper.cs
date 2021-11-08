@@ -116,9 +116,16 @@ namespace LenguajesIV_ProjectoFinal.Services
         {
             return db.Table<Agentes>().Where(agen => agen.user_agente == user && agen.password_agente == password).FirstOrDefaultAsync();
         }
-        
-
-
+        //INFRACTORES:
+        public Task<Infractores> Get_Infractores_byDNI_Async(string dni)
+        {
+            return db.Table<Infractores>().Where(infractor => infractor.dni_infractor == Convert.ToInt32(dni)).FirstOrDefaultAsync();
+        }
+        //VEHICULOS:
+        public Task<Vehiculos> Get_VehiculosbyPatente_Async(string patente)
+        {
+            return db.Table<Vehiculos>().Where(vehiculo => vehiculo.patente_dominio_vehiculo == patente).FirstOrDefaultAsync();
+        }
 
 
         //DELETE:
