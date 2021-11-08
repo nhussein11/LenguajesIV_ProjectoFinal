@@ -71,26 +71,35 @@ namespace LenguajesIV_ProjectoFinal.Views
             multa.fecha_multa = this.HoraPicker.Time.ToString();
             //Paso la multa a propiedades
             Application.Current.Properties["Multa"] = multa;
-            if ((bool)Application.Current.Properties["infractor_nuevo"] == true)
+            try
             {
-                Infractores infractor = new Infractores();
-                infractor.apellido_infractor = this.txtapellido.Text;
-                infractor.dni_infractor = (this.txtdni.Text);
-                infractor.nombre_infractor = this.txtdomicilio.Text;
-                infractor.telefono_infractor = (this.txttelefono.Text);
-                infractor.domicilio_infractor = this.txtdomicilio.Text;
-                Application.Current.Properties["infractor"] = infractor;
+                if ((bool)Application.Current.Properties["infractor_nuevo"] == true)
+                {
+                    Infractores infractor = new Infractores();
+                    infractor.apellido_infractor = this.txtapellido.Text;
+                    infractor.dni_infractor = (this.txtdni.Text);
+                    infractor.nombre_infractor = this.txtdomicilio.Text;
+                    infractor.telefono_infractor = (this.txttelefono.Text);
+                    infractor.domicilio_infractor = this.txtdomicilio.Text;
+                    Application.Current.Properties["infractor"] = infractor;
+                }
+                if ((bool)Application.Current.Properties["vehiculo_nuevo"] == true)
+                {
+                    Vehiculos vehiculo = new Vehiculos();
+                    vehiculo.patente_dominio_vehiculo = this.txtPatente.Text;
+                    vehiculo.modelo_vehiculo = this.txtModelo.Text;
+                    vehiculo.caracteristicas_vehiculo = this.txtCaracteristicas.Text;
+                    Application.Current.Properties["vehiculo"] = vehiculo;
+                }
+                //Navegar a siguiente pantalla
+                await Shell.Current.GoToAsync($"///{nameof(CargarDetallesMulta)}");
             }
-            if ((bool)Application.Current.Properties["vehiculo_nuevo"] == true)
+            catch (Exception)
             {
-                Vehiculos vehiculo = new Vehiculos();
-                vehiculo.patente_dominio_vehiculo = this.txtPatente.Text;
-                vehiculo.modelo_vehiculo = this.txtModelo.Text;
-                vehiculo.caracteristicas_vehiculo = this.txtCaracteristicas.Text;
-                Application.Current.Properties["vehiculo"] = vehiculo;
+                await DisplayAlert("No validó los datos", "DEBE validar los datos DNI del infractor y PATENTE del vehiculo", "OK");
+
             }
-            //Navegar a siguiente pantalla
-            await Shell.Current.GoToAsync($"///{nameof(CargarDetallesMulta)}");
+            finally { await Shell.Current.GoToAsync($"///{nameof(NuevaMulta)}"); }           
         }
     }
 }
