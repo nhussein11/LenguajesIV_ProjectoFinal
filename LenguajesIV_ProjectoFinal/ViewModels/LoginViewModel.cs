@@ -45,7 +45,6 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
                     Application.Current.Properties["isLogged"] = true;
                     await Shell.Current.GoToAsync($"//{nameof(Perfil)}");
 
-
                 }
                 else {
                     await Application.Current.MainPage.DisplayAlert("Error en el Inicio de Sesion", "Usuario y/o Contraseña incorrectos", "Ok");
