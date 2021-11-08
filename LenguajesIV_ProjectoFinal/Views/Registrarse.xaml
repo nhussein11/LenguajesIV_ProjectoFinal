@@ -20,15 +20,16 @@
                 <Entry Placeholder="D.N.I" Keyboard="Numeric" Margin="0,0,0,30" Text="{Binding dni}"></Entry> 
             
             <Label Text="Datos de Inicio de Sesion" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
-            
-            <Entry Placeholder="Usuario" Text="{Binding usuario}"></Entry>
+                
+            <Entry Placeholder="Correo electronico" Text="{Binding correo}"></Entry>
+               <Entry Placeholder="Usuario" Text="{Binding usuario}"></Entry>
             <Entry Placeholder="Contraseña" IsPassword="True" Text="{Binding contraseña}"></Entry>
             <Button
                    VerticalOptions="Center"
                 Text="Registrase"
                 BorderWidth="1.5"
                 CornerRadius="50"
-                Margin="0,20,0,0"
+                Margin="0,5,0,5"
                 Command="{Binding RegistrarUsuarioCommand}"
                 IsEnabled="{Binding ValidarCampos}"
                 ></Button>

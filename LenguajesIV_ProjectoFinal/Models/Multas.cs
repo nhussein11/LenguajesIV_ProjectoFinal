@@ -15,7 +15,7 @@ namespace LenguajesIV_ProjectoFinal.Models
         [MaxLength(10)] //Formato: hh:mm
         public string hora_multa { get; set; }
         [MaxLength(50)]
-        public string lugar_multa { get; set; } //Este creo que seria opcional, ya que lo conectamos con la tabla ubicaciones por la FK
+        public string lugar_multa { get; set; } //nombre del lugar de la multa, proporcionado por el agente
 
         public int cod_agente { get; set; }
         public int cod_infractor { get; set; }

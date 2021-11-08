@@ -16,6 +16,7 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
         public string dni { get; set; }
         public string usuario { get; set; }
         public string contraseña { get; set; }
+        public string correo { get; set; }
         public bool ValidarCampos()
         {
 
@@ -29,6 +30,8 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
                 && !string.IsNullOrEmpty(usuario)
                 && contraseña.Length > 0
                 && !string.IsNullOrEmpty(contraseña)
+                 &&  correo.Length > 0
+                && !string.IsNullOrEmpty(correo)
                 );
 
         }
