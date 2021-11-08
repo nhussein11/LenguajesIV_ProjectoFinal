@@ -32,8 +32,8 @@ namespace LenguajesIV_ProjectoFinal.Views
                 apellido_agente = this.txtapellido.Text,
                 dni_agente = Convert.ToInt32(this.txtdni.Text),
                 domicilio_agente = this.txtdomicilio.Text,
-                telefono_agente = Convert.ToInt32(this.txttelefono.Text),
-                email_agente = this.txtcorreo.Text
+                telefono_agente = Convert.ToInt64(this.txttelefono.Text),
+                email_agente = this.txtcorreo.Text.ToString()
             };
             await App.SQLiteDB.SaveAgentesAsync(agente_conectado);
         }
@@ -45,7 +45,9 @@ namespace LenguajesIV_ProjectoFinal.Views
             this.txtapellido.Text = agente_conectado.apellido_agente;
             this.txtdni.Text = agente_conectado.dni_agente.ToString();
             this.txtdomicilio.Text = agente_conectado.domicilio_agente;
-            this.txttelefono.Text = agente_conectado.telefono_agente.ToString();
+            if (agente_conectado.telefono_agente != 0) { this.txttelefono.Text = agente_conectado.telefono_agente.ToString(); }
+            else{ this.txttelefono.Text = ""; }
+            
             this.txtcorreo.Text = agente_conectado.email_agente;
         }
     }
