@@ -22,7 +22,7 @@
             </Grid>
             <Grid>
                 <Label Text="Mensaje:" FontAttributes="Bold" ></Label>
-                <Entry Margin="0,20,0,0"  x:Name="txtAsunto" IsEnabled="False" MaxLength="300" WidthRequest="120" HeightRequest="120"></Entry>
+                <Entry Margin="0,20,0,0"  x:Name="txtMensaje" IsEnabled="False" MaxLength="300" WidthRequest="120" HeightRequest="120"></Entry>
             </Grid>
             <Grid>
                 <Button Text="Enviar" Clicked="EnviarCorreo" ></Button>
