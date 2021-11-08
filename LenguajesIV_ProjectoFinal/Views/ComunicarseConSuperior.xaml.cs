@@ -16,5 +16,10 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             InitializeComponent();
         }
+
+        private void EnviarCorreo(object sender, EventArgs e)
+        {
+
+        }
     }
 }
