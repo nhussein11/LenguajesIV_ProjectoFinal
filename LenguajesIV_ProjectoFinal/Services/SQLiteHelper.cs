@@ -112,11 +112,15 @@ namespace LenguajesIV_ProjectoFinal.Services
         /// <param name="user"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-         public Task<Agentes> Get_Agentes_byUserandPassword_Async(string user, string password)
+        public Task<Agentes> Get_Agentes_byUserandPassword_Async(string user, string password)
         {
             return db.Table<Agentes>().Where(agen => agen.user_agente == user && agen.password_agente == password).FirstOrDefaultAsync();
         }
         
+
+
+
+
         //DELETE:
         /// <summary>
         /// Eliminar un Agente dado
