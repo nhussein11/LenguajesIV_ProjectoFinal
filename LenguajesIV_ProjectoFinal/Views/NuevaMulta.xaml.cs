@@ -37,7 +37,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             }
             else
             {
-                //await DisplayAlert("No esta registrado, ingrese los datos para registrarlo junto con la multa");
+                await DisplayAlert("No esta registrado", "ingrese los datos para registrarlo junto con la multa","ok");
                 Application.Current.Properties["infractor_nuevo"] = true;
             }
         }
@@ -54,7 +54,7 @@ namespace LenguajesIV_ProjectoFinal.Views
                 Application.Current.Properties["vehiculo_nuevo"] = false;
             }
             else {
-                //await DisplayAlert("No esta registrado, ingrese los datos para registrarlo junto con la multa");
+                await DisplayAlert("No esta registrado", "ingrese los datos para registrarlo junto con la multa", "ok");
                 Application.Current.Properties["vehiculo_nuevo"] = true;
             }
         }
