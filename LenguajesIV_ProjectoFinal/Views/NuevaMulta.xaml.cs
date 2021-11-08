@@ -75,7 +75,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             {
                 Infractores infractor = new Infractores();
                 infractor.apellido_infractor = this.txtapellido.Text;
-                infractor.dni_infractor = Convert.ToInt32(this.txtdni.Text);
+                infractor.dni_infractor = (this.txtdni.Text);
                 infractor.nombre_infractor = this.txtdomicilio.Text;
                 infractor.telefono_infractor = Convert.ToInt32(this.txttelefono.Text);
                 infractor.domicilio_infractor = this.txtdomicilio.Text;

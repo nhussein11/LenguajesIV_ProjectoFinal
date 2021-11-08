@@ -119,7 +119,8 @@ namespace LenguajesIV_ProjectoFinal.Services
         //INFRACTORES:
         public Task<Infractores> Get_Infractores_byDNI_Async(string dni)
         {
-            return db.Table<Infractores>().Where(infractor => infractor.dni_infractor == Convert.ToInt32(dni)).FirstOrDefaultAsync();
+            
+            return db.Table<Infractores>().Where(infractor => infractor.dni_infractor == (dni)).FirstOrDefaultAsync();
         }
         //VEHICULOS:
         public Task<Vehiculos> Get_VehiculosbyPatente_Async(string patente)

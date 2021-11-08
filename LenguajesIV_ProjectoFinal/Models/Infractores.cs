@@ -16,7 +16,7 @@ namespace LenguajesIV_ProjectoFinal.Models
         [MaxLength(50)]
         public string domicilio_infractor { get; set; }
 
-        public int dni_infractor { get; set; }
+        public string  dni_infractor { get; set; }
         public int telefono_infractor { get; set; }
     }
 }
