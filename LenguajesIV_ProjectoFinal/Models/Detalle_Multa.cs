@@ -17,6 +17,7 @@ namespace LenguajesIV_ProjectoFinal.Models
 
         public int subtotal_detalle_multa { get; set; }
 
+        public string descripcion_infraccion { get; set; } // necesito esto en este modelo asi me es mas facil trabajarlo
         //FKs: cod_multa, cod_infraccion
         public int cod_multa { get; set; }
         public int cod_infracion { get; set; }

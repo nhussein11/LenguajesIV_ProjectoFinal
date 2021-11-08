@@ -4,10 +4,77 @@
              x:Class="LenguajesIV_ProjectoFinal.Views.NuevaMulta"
              Background="#F5E1C9">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="25" VerticalOptions="Start"  HorizontalOptions="Center">
+                <Label Text="Registrar Nueva multa" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
+                <!--#region Datos del infractor-->
+                <Label Text="Datos del Infractor" FontSize="Medium" FontAttributes="Bold"></Label>
+                <Grid>
+                    <Label Text="DNI" FontAttributes="Bold"></Label>
+                    <Entry Margin="0,20,0,0" Keyboard="Numeric" x:Name="txtdni"></Entry>
+
+                </Grid>
+                <Grid>
+                    <Button Text="Validar" HorizontalOptions="End" Clicked="Validar_Infractor"></Button>
+                </Grid>
+                <Grid>
+                    <Label Text="Nombre" FontAttributes="Bold"></Label>
+                    <Entry Margin="0,20,0,0"  x:Name="txtnombre"></Entry>
+                </Grid>
+                <Grid>
+                    <Label Text="Apellido" FontAttributes="Bold"></Label>
+                    <Entry Margin="0,20,0,0"  x:Name="txtapellido"></Entry>
+                </Grid>
+                <Grid>
+                    <Label Text="Domicilio" FontAttributes="Bold"></Label>
+                    <Entry Margin="0,20,0,0"  x:Name="txtdomicilio"></Entry>
+                </Grid>
+                <Grid>
+                    <Label Text="Telefono" FontAttributes="Bold"></Label>
+                    <Entry Margin="0,20,0,0" Keyboard="Numeric" x:Name="txttelefono"></Entry>
+                </Grid>
+                <!--#endregion-->
+                <!--#region Datos del Vehiculo-->
+                <Label Text="Datos del Vehiculo" FontSize="Medium" FontAttributes="Bold"></Label>
+                <Grid>
+                    <Label Text="Dominio" FontAttributes="Bold"></Label>
+                    <Entry Margin="0,20,0,0"  x:Name="txtPatente"></Entry>
+
+                </Grid>
+                <Grid>
+                    <Button Text="Validar" HorizontalOptions="End" Clicked="Validar_Vehiculo" ></Button>
+                </Grid>
+                <Grid>
+                    <Label Text="Modelo" FontAttributes="Bold"></Label>
+                    <Entry Margin="0,20,0,0"  x:Name="txtModelo"></Entry>
+
+                </Grid>
+                <Grid>
+                    <Label Text="Caracteristicas" FontAttributes="Bold"></Label>
+                    <Entry Margin="0,20,0,0"  x:Name="txtCaracteristicas"></Entry>
+
+                </Grid>
+
+                <!--#region -->
+                    <!--#region Datos de la multa-->
+                <Label Text="Datos de la Multa" FontSize="Medium" FontAttributes="Bold"></Label>
+                <Grid>
+                    <Label Text="Fecha" FontAttributes="Bold"></Label>
+                    <DatePicker Margin="0,20,0,0" x:Name="FechaPicker"></DatePicker>
+                </Grid>
+                <Grid>
+                    <Label Text="Hora" FontAttributes="Bold"></Label>
+                    <TimePicker Format="T" x:Name="HoraPicker" Margin="0,20,0,0"></TimePicker>
+                </Grid>
+                <Grid>
+                    <Label Text="Lugar del Hecho" FontAttributes="Bold"></Label>
+                    <Entry Margin="0,20,0,0" x:Name="txtLugar"></Entry>
+                </Grid>
+                <Grid>
+                    <Button Text="Siguiente" Clicked="Siguiente_Pantalla"></Button>
+                </Grid>
+                <!--#endregion-->
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

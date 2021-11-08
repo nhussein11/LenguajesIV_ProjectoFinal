@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenguajesIV_ProjectoFinal.Views.CargarDetallesMulta"
+             xmlns:local="clr-namespace:LenguajesIV_ProjectoFinal.ViewModels"
+              Background="#F5E1C9">
+    <ContentPage.BindingContext>
+        <local:CargarDetalleMultaViewModel></local:CargarDetalleMultaViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="25" VerticalOptions="Start"  HorizontalOptions="Center">
+            <Label Text="Registrar Detalles de la Multa" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
+            <Grid>
+                <Label Text="Seleccionar Infraccion" FontAttributes="Bold"></Label>
+                <Picker Margin="0,20,0,0" ItemDisplayBinding="{Binding descripcion_infraccion}" x:Name="InfraccionPicker" Title="Seleccionar Infraccion" ItemsSource="{Binding ListaDeInfracciones}" SelectedIndexChanged="InfraccionPicker_SelectedIndexChanged"    ></Picker>
+
+            </Grid>
+            <Grid>
+                <Label Text="Precio" FontAttributes="Bold"></Label>
+                <Entry Keyboard="Numeric" Margin="0,20,0,0" x:Name="txtPrecio"></Entry>
+            </Grid>
+            <Grid>
+                <Label Text="Testimonio del Agente" FontAttributes="Bold"></Label>
+                <Entry  Margin="0,20,0,0" WidthRequest="120" HeightRequest="120" MaxLength="200" x:Name="txtTestimonio"></Entry>
+            </Grid>
+            <Grid>
+                <Label Text="Observaciones" FontAttributes="Bold"></Label>
+                <Entry  Margin="0,20,0,0" WidthRequest="120" HeightRequest="60" MaxLength="100" x:Name="txtObservaciones"></Entry>
+            </Grid>
+
+            <Grid>
+           
+                <Button Text="Agregar Infraccion" HorizontalOptions="Center" Clicked="Agregar_Detalle" Margin="0,20,0,0"></Button>
+                
+            </Grid>
+
+            
+            <Grid>
+                <Button Text="Atras" HorizontalOptions="Start" Clicked="Atras" Margin="0,20,0,0"></Button>
+                <Button Text="Siguiente" HorizontalOptions="End" Clicked="Siguiente" Margin="0,20,0,0"></Button>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
