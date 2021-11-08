@@ -23,5 +23,11 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             await Shell.Current.GoToAsync($"//{nameof(Registrarse)}");
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+            //probar el: Get_Agentes_byUserandPassword_Async
+        }
     }
 }

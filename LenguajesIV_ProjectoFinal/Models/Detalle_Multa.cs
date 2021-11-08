@@ -18,6 +18,8 @@ namespace LenguajesIV_ProjectoFinal.Models
         public int subtotal_detalle_multa { get; set; }
 
         //FKs: cod_multa, cod_infraccion
+        public int cod_multa { get; set; }
+        public int cod_infracion { get; set; }
 
     }
 }

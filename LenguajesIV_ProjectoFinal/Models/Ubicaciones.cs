@@ -17,5 +17,6 @@ namespace LenguajesIV_ProjectoFinal.Models
         public string longitud_ubicacion { get; set; }
 
         //FKs: cod_multa
+        public int cod_multa { get; set; }
     }
 }

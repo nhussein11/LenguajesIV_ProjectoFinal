@@ -41,6 +41,7 @@ namespace LenguajesIV_ProjectoFinal.Services
         //DETALLE_MULTA:
         public Task<int> SaveDetalle_MultaAsync(Detalle_Multa det_multa)
         {
+            //Acá debería hacer el insert/update de cod_multa, cod_infraccion
             if (det_multa.cod_detalle_multa == 0)
             {
                 return db.UpdateAsync(det_multa);
@@ -68,6 +69,7 @@ namespace LenguajesIV_ProjectoFinal.Services
         //MULTAS:
         public Task<int> SaveMultassAsync(Multas multas)
         {
+            //Acá debería hacer el insert/update de cod_vehiculo, cod_infractor, cod agente
             if (multas.cod_multa == 0)
             {
                 return db.UpdateAsync(multas);
@@ -77,6 +79,7 @@ namespace LenguajesIV_ProjectoFinal.Services
         //UBICACIONES:
         public Task<int> SaveUbicacionesAsync(Ubicaciones ubi)
         {
+            //Acá debería hacer el insert/update de cod_multa
             if (ubi.cod_ubicacion== 0)
             {
                 return db.UpdateAsync(ubi);
@@ -103,13 +106,18 @@ namespace LenguajesIV_ProjectoFinal.Services
         {
             return db.Table<Agentes>().ToListAsync();
         }
-        /*
-         public Task<List<Agentes>> Get_Agentes_byUserandPassword_Async(string user, string password)
+        /// <summary>
+        /// SELECT * from agente where user=user_dado and password=pass_dada
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+         public Task<Agentes> Get_Agentes_byUserandPassword_Async(string user, string password)
         {
-            return db.Table<Agentes>().Where(agen => agen.user_agente == user and agen.password_agente == password).FirstOrDefaultAsync();
+            return db.Table<Agentes>().Where(agen => agen.user_agente == user && agen.password_agente == password).FirstOrDefaultAsync();
         }
-         */
-                                    //DELETE:
+        
+        //DELETE:
         /// <summary>
         /// Eliminar un Agente dado
         /// </summary>
