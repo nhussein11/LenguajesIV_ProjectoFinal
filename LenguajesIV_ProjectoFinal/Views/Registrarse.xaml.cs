@@ -16,6 +16,7 @@ namespace LenguajesIV_ProjectoFinal.Views
         public Registrarse()
         {
             InitializeComponent();
+            
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

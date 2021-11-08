@@ -1,12 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LenguajesIV_ProjectoFinal.Views.Perfil">
+             x:Class="LenguajesIV_ProjectoFinal.Views.Perfil"
+             BackgroundColor="#F5E1C9">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="25" VerticalOptions="Center"  HorizontalOptions="FillAndExpand">
+                <Frame x:Name="circleFrame" CornerRadius="30" HasShadow="False" Padding="0" Margin="0,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Black" IsClippedToBounds="True" BorderColor="Black">
+                    <Image Source="ucasal_logo.jpg" HeightRequest="80" WidthRequest="80" Aspect="AspectFit"></Image>
+                </Frame>
+                <Label Text="Datos de Inicio de Sesion" HorizontalOptions="Start"  FontSize="Medium" FontAttributes="Bold"></Label>
+
+                <Entry x:Name="txtusuario" Placeholder="usuario" IsEnabled="False"></Entry>
+                <Entry x:Name="txtcontraseña" Placeholder="contraseña"></Entry>
+                <Entry x:Name="txtcorreo" Placeholder="Email" Keyboard="Email"></Entry>
+                <Label Text="Datos Personales" HorizontalOptions="Start"  FontSize="Medium" FontAttributes="Bold"></Label>
+
+                <Entry x:Name="txtnombre" Placeholder="Nombre"></Entry>
+                <Entry x:Name="txtapellido" Placeholder="Apellido"></Entry>
+                <Entry x:Name="txtdni" Placeholder="DNI" Keyboard="Numeric"></Entry>
+                <Entry x:Name="txttelefono" Placeholder="Telefono" Keyboard="Numeric"></Entry>
+                <Entry x:Name="txtdomicilio" Placeholder="Domicilio" ></Entry>
+
+                <Button VerticalOptions="Center"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                Margin="0" Text="Guardar Datos" 
+                    Clicked="GuardarDatos"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
+    
 </ContentPage>

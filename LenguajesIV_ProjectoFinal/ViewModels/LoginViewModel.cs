@@ -41,8 +41,8 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
                 if (await this.ValidarUsuarioAsync())
                 {
                     //iniciar sesion
-                    App.Current.Properties["usuario"] = this.usuario;
-                    App.Current.Properties["isLogged"] = true;
+                    Application.Current.Properties["usuario"] = this.usuario;
+                    Application.Current.Properties["isLogged"] = true;
                     await Shell.Current.GoToAsync($"//{nameof(Perfil)}");
 
 
