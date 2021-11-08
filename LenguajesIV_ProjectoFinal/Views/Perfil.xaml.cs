@@ -28,6 +28,9 @@ namespace LenguajesIV_ProjectoFinal.Views
             //metodo que haga update en la tabla agentes, donde el usuario sea (string)Application.Current.Properties["usuario"]
             //No puede cambiar su nombre de usuario, nos hace la vida mas facil
             Agentes agente_conectado = new Agentes {
+                cod_agente =((Agentes) Application.Current.Properties["DatosUsuario"]).cod_agente,
+                user_agente = ((Agentes)Application.Current.Properties["DatosUsuario"]).user_agente,
+                password_agente= this.txtcontraseña.Text,
                 nombre_agente = this.txtnombre.Text,
                 apellido_agente = this.txtapellido.Text,
                 dni_agente = Convert.ToInt32(this.txtdni.Text),
@@ -36,6 +39,7 @@ namespace LenguajesIV_ProjectoFinal.Views
                 email_agente = this.txtcorreo.Text.ToString()
             };
             await App.SQLiteDB.SaveAgentesAsync(agente_conectado);
+           
         }
         public async void Llenar_campos_usuarioactivo(string user, string contra) 
         {
@@ -47,7 +51,6 @@ namespace LenguajesIV_ProjectoFinal.Views
             this.txtdomicilio.Text = agente_conectado.domicilio_agente;
             if (agente_conectado.telefono_agente != 0) { this.txttelefono.Text = agente_conectado.telefono_agente.ToString(); }
             else{ this.txttelefono.Text = ""; }
-            
             this.txtcorreo.Text = agente_conectado.email_agente;
         }
     }
