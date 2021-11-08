@@ -11,7 +11,6 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
     class CargarDetalleMultaViewModel
     {
         public IList<Infracciones> ListaDeInfracciones { get; set; }
-
         public CargarDetalleMultaViewModel() {
             ListaDeInfracciones = new ObservableCollection<Infracciones>();
             // hardcodearlas(?

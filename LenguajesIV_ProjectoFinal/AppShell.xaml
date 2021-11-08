@@ -102,6 +102,9 @@
     <FlyoutItem Title="Ver Multas" Icon="icon_feed.png" FlyoutItemIsVisible="False">
         <ShellContent Route="VerMultas" ContentTemplate="{DataTemplate local:VerMultas}" />
     </FlyoutItem>
+    <FlyoutItem Title="MarcarEnElMapa"  FlyoutItemIsVisible="False">
+        <ShellContent Route="MarcarEnElMapa" ContentTemplate="{DataTemplate local:MarcarEnElMapa}" />
+    </FlyoutItem>
     
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->

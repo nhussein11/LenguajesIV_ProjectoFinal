@@ -32,29 +32,13 @@ namespace LenguajesIV_ProjectoFinal.Views
         private async void Siguiente_Pantalla(object sender, EventArgs e)
         {
             //Validar que esten ingresados los campos y sean validos
-            //Crear Infractor si es necesario
-            Infractores infractor = new Infractores();
-            infractor.apellido_infractor = this.txtapellido.Text;
-            infractor.dni_infractor = Convert.ToInt32(this.txtdni.Text);
-            infractor.nombre_infractor = this.txtdomicilio.Text;
-            infractor.telefono_infractor = Convert.ToInt32(this.txttelefono.Text);
-            infractor.domicilio_infractor = this.txtdomicilio.Text;
-
-            //Crear Vehiculo si es necesario
-            Vehiculos auto = new Vehiculos();
-            auto.patente_dominio_vehiculo = this.txtPatente.Text;
-            auto.modelo_vehiculo = this.txtModelo.Text;
-            auto.caracteristicas_vehiculo = this.txtCaracteristicas.Text;
-
+            //Siempre se crea la multa
             Multas multa = new Multas();
+            //se agrega fecha y hora
             multa.fecha_multa = this.FechaPicker.Date.ToString("{MMM d, yyyy}");
             multa.fecha_multa = this.HoraPicker.Time.ToString();
-
-            //cod_vehiculo consultar en bd el cod del vehiculo cuya patente este en this.txtPantente.Text
-            //cod_agente consultar cod en bd de agente cuso usuario es  Application.Current.Properties["usuario"]
-            //grabar multa en bd
-            //el codigo que devuelve el metodo de ingresar guardarlo en Application.Current.Properties["codigoMulta"]
-            Application.Current.Properties["codigoMulta"] = 1;
+            //Paso la multa a propiedades
+            Application.Current.Properties["Multa"] = multa;
             //Navegar a siguiente pantalla
             await Shell.Current.GoToAsync($"///{nameof(CargarDetallesMulta)}");
 
@@ -66,11 +50,37 @@ namespace LenguajesIV_ProjectoFinal.Views
             string patente = this.txtPatente.Text;
             //cargar en campos los datos encontrados
             // si no encuentra dato --> displayAlert("No esta registrado, ingrese los datos para registrarlo junto con la multa")
+                //Crear Vehiculo si es necesario
+                Vehiculos auto = new Vehiculos();
+                auto.patente_dominio_vehiculo = this.txtPatente.Text;
+                auto.modelo_vehiculo = this.txtModelo.Text;
+                auto.caracteristicas_vehiculo = this.txtCaracteristicas.Text;
+                //Mando el Objeto Auto a las propiedades y le pongo un null a cod_auto
+                Application.Current.Properties["auto"] = auto;
+                Application.Current.Properties["cod_auto"] = null;
+            //si encontre el auto, mando el codigo del auto  a las propiedades
+            //De esta forma se cuando hay que registrar o no
+                Application.Current.Properties["cod_auto"] = 1;
+
         }
         private void Validar_Infractor(object sender, EventArgs e) {
             //Buscar dni en bd
+            //Si encuentro
             //cargar datos en los campos
+                //Mando el codigo a propiedades
+                     Application.Current.Properties["cod_infractor"] = 1;
             // si no encuentra dato -->  displayAlert("No esta registrado, ingrese los datos para registrarlo junto con la multa")
+            //Crear Infractor si es necesario
+            Infractores infractor = new Infractores();
+                    infractor.apellido_infractor = this.txtapellido.Text;
+                    infractor.dni_infractor = Convert.ToInt32(this.txtdni.Text);
+                    infractor.nombre_infractor = this.txtdomicilio.Text;
+                    infractor.telefono_infractor = Convert.ToInt32(this.txttelefono.Text);
+                    infractor.domicilio_infractor = this.txtdomicilio.Text;
+                //Mando infractor a Propiedades y el codigo en null
+                Application.Current.Properties["infractor"] = infractor;
+                Application.Current.Properties["cod_infractor"] = null;
+
 
         }
 
