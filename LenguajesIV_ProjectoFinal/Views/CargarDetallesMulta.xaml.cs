@@ -100,9 +100,6 @@ namespace LenguajesIV_ProjectoFinal.Views
 
             await Shell.Current.GoToAsync($"//{nameof(NuevaMulta)}");//again
             await Shell.Current.GoToAsync($"//{nameof(CargarDetallesMulta)}");
-
-
-
         }
     }
 }

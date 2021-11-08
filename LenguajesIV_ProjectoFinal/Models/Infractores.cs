@@ -17,6 +17,6 @@ namespace LenguajesIV_ProjectoFinal.Models
         public string domicilio_infractor { get; set; }
 
         public string  dni_infractor { get; set; }
-        public int telefono_infractor { get; set; }
+        public string telefono_infractor { get; set; }
     }
 }
