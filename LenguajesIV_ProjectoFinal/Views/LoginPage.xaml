@@ -4,6 +4,7 @@
              x:Class="LenguajesIV_ProjectoFinal.Views.LoginPage"
              xmlns:local="clr-namespace:LenguajesIV_ProjectoFinal.ViewModels"
              Shell.FlyoutBehavior="Disabled"
+             Background="#F5E1C9"
        >
     <ContentPage.BindingContext>
         <local:LoginViewModel></local:LoginViewModel>
