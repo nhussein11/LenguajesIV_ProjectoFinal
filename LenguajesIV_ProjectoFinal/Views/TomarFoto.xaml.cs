@@ -19,11 +19,6 @@ namespace LenguajesIV_ProjectoFinal.Views
             BindingContext = new FotoViewModel();
         }
 
-        private void Capturar(object sender, EventArgs e)
-        {
-
-        }
-
         private void Atras(object sender, EventArgs e)
         {
             Shell.Current.GoToAsync($"//{nameof(CargarDetallesMulta)}");

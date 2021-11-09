@@ -46,7 +46,7 @@ namespace LenguajesIV_ProjectoFinal.Views
         private void Siguiente(object sender, EventArgs e)
         {
             Application.Current.Properties["listaDetalles"] = ListaDeInfraccionesAgregadas;
-            Shell.Current.GoToAsync($"//{nameof(MarcarEnElMapa)}");
+            Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
         }
 
         private async void Agregar_Detalle(object sender, EventArgs e)
