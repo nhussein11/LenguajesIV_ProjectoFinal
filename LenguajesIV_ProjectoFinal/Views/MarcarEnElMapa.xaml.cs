@@ -70,17 +70,12 @@ namespace LenguajesIV_ProjectoFinal.Views
                 motivo_descripcion_importe += "infraccion: " + detalle.descripcion_infraccion + ",Observaciones: " + detalle.observacion_detalle_multa + ",Importe: " + detalle.subtotal_detalle_multa + "\n";
             }
 
-            string Body = $"Se registro con exito la multa codigo:{cod_multa},labrada por el agente:{agente_apellido},{agente_nombre}.El infractor fue:{apellido_infractor},{nombre_infractor}.A borde de un vehiculo dominio:{patente_vehiculo}, Modelo:{modelo_vehiculo} cuya descripcion coincide con:{descricpion_vehiculo}. La multa esta dada en consta de los sigueintes conceptos:{motivo_descripcion_importe}";
+            string Body = $"Se registro con exito la multa codigo:{cod_multa},labrada por el agente:{agente_apellido},{agente_nombre}.\n El infractor fue:{apellido_infractor},{nombre_infractor}.\n A borde de un vehiculo dominio:{patente_vehiculo}, Modelo:{modelo_vehiculo} cuya descripcion coincide con:{descricpion_vehiculo}.\n La multa esta dada en consta de los sigueintes conceptos:\n {motivo_descripcion_importe}";
             var mensaje = new EmailMessage("Nueva Multa generada", Body, "superior@salta.com.ar");
             mensaje.BodyFormat = EmailBodyFormat.PlainText;
             EmailAttachment foto_dni = new EmailAttachment((string)Application.Current.Properties["path_foto"]);
             mensaje.Attachments.Add(foto_dni);
             await Email.ComposeAsync(mensaje);
-
-
-
-
-            //mail_superior_coninfo_multa(multa_a_insertar, (Infractores)Application.Current.Properties["infractor"], (Vehiculos)Application.Current.Properties["vehiculo"], (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"], (Agentes)Application.Current.Properties["DatosUsuario"]);
 
             //limpiar variables de Properties 
             Application.Current.Properties["infractor_nuevo"] = false;
@@ -95,6 +90,8 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         }
 
+        //Nico
+        //mail_superior_coninfo_multa(multa_a_insertar, (Infractores)Application.Current.Properties["infractor"], (Vehiculos)Application.Current.Properties["vehiculo"], (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"], (Agentes)Application.Current.Properties["DatosUsuario"]);
 
         /*
          public void mail_superior_coninfo_multa(Multas multa, Infractores infractor, Vehiculos vehiculo, IList<Detalle_Multa> detalles_multa, Agentes agente) {
