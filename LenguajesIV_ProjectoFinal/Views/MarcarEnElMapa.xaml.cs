@@ -23,6 +23,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             //aca van a estar los datos de la localizacion tambien
             //los inserto a todos
             //Inserto, en caso de ser necesario, los datos del infractor nuevo y del vehiculo neuvo dentro de la bdd
+            //Cuando guardes la multa, guarda tambien el path de la foto del DNI ->FotoViewModel
             if ((bool)Application.Current.Properties["infractor_nuevo"] == true)
             {
                 await App.SQLiteDB.SaveInfractoresAsync((Infractores)Application.Current.Properties["infractor"]);

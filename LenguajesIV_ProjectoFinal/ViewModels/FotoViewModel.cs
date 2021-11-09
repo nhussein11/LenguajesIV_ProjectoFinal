@@ -23,6 +23,8 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
 
                 Foto_img = ImageSource.FromStream(() => { return foto.GetStream(); });
                 //guardo el path a la foto dentro del sistema de archivos
+                //deberiamos guardar este path en la bd en multas
+                //luego en el correo en la opcion Attachments lo adjuntamos como archivo
                 Application.Current.Properties["path_foto"] = foto.AlbumPath;
             }
         
