@@ -17,16 +17,26 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             InitializeComponent();
             BindingContext = new FotoViewModel();
+            Application.Current.Properties["path_foto"] =null;
+
         }
 
         private void Atras(object sender, EventArgs e)
         {
+
             Shell.Current.GoToAsync($"//{nameof(CargarDetallesMulta)}");
         }
 
         private void Siguiente(object sender, EventArgs e)
         {
-            Shell.Current.GoToAsync($"//{nameof(MarcarEnElMapa)}");
+            if (Application.Current.Properties["path_foto"] != null)
+            {
+                Shell.Current.GoToAsync($"//{nameof(MarcarEnElMapa)}");
+
+            }
+            else {
+                DisplayAlert("Atencion!", "debe adjuntar una foto valida", "ok");
+            }
         }
     }
 }
