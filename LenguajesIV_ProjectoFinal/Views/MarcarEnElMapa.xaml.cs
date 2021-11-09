@@ -51,10 +51,35 @@ namespace LenguajesIV_ProjectoFinal.Views
                 //Antes de insertar los detalles,ponerles en cod_multa el codigo de la multa que se acaba de registrar
                 await App.SQLiteDB.SaveDetalle_MultaAsync(detalle);
             }
-            //Al final de todo mostrar alert que se guardo todo correcto
+            
             await DisplayAlert("Atencion!", "Se guardaron correctamente los datos", "OK");
 
             //mail al superior:
+
+            string agente_apellido = ((Agentes)Application.Current.Properties["DatosUsuario"]).apellido_agente;
+            string agente_nombre = ((Agentes)Application.Current.Properties["DatosUsuario"]).nombre_agente;
+            string apellido_infractor = ((Infractores)Application.Current.Properties["infractor"]).apellido_infractor;
+            string nombre_infractor = ((Infractores)Application.Current.Properties["infractor"]).nombre_infractor;
+            string patente_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).patente_dominio_vehiculo; // lo mismo aca 
+            string modelo_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).modelo_vehiculo; // lo mismo aca 
+            string descricpion_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).caracteristicas_vehiculo; // lo mismo aca 
+            string motivo_descripcion_importe = "";
+
+            foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"])
+            {
+                motivo_descripcion_importe += "infraccion: " + detalle.descripcion_infraccion + ",Observaciones: " + detalle.observacion_detalle_multa + ",Importe: " + detalle.subtotal_detalle_multa + "\n";
+            }
+
+            string Body = $"Se registro con exito la multa codigo:{cod_multa},labrada por el agente:{agente_apellido},{agente_nombre}.El infractor fue:{apellido_infractor},{nombre_infractor}.A borde de un vehiculo dominio:{patente_vehiculo}, Modelo:{modelo_vehiculo} cuya descripcion coincide con:{descricpion_vehiculo}. La multa esta dada en consta de los sigueintes conceptos:{motivo_descripcion_importe}";
+            var mensaje = new EmailMessage("Nueva Multa generada", Body, "superior@salta.com.ar");
+            mensaje.BodyFormat = EmailBodyFormat.PlainText;
+            EmailAttachment foto_dni = new EmailAttachment((string)Application.Current.Properties["path_foto"]);
+            mensaje.Attachments.Add(foto_dni);
+            await Email.ComposeAsync(mensaje);
+
+
+
+
             //mail_superior_coninfo_multa(multa_a_insertar, (Infractores)Application.Current.Properties["infractor"], (Vehiculos)Application.Current.Properties["vehiculo"], (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"], (Agentes)Application.Current.Properties["DatosUsuario"]);
 
             //limpiar variables de Properties 
@@ -66,7 +91,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             Application.Current.Properties["listaDetalles"] = null;
             Application.Current.Properties["DatosUsuario"] = null;
             Application.Current.Properties["path_foto"] = null;
-            //y ¿todos los entry usados tmb?
+           
 
         }
 
