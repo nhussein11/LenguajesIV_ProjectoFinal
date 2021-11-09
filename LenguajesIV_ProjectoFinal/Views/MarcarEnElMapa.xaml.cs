@@ -54,16 +54,26 @@ namespace LenguajesIV_ProjectoFinal.Views
             foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"]) {
                 await App.SQLiteDB.SaveDetalle_MultaAsync(detalle);
             }
+            //Al final de todo mostrar alert que se guardo todo correcto
             await DisplayAlert("Atencion!", "Se guardaron correctamente los datos", "OK");
 
-            //Al final de todo mostrar alert que se guardo todo correcto
             //mail al superior:
             //mail_superior_coninfo_multa(multa_a_insertar, (Infractores)Application.Current.Properties["infractor"], (Vehiculos)Application.Current.Properties["vehiculo"], (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"], (Agentes)Application.Current.Properties["DatosUsuario"]);
-            //limpiar variables de Properties y ¡todos los entry usados!
+
+            //limpiar variables de Properties 
+            Application.Current.Properties["infractor_nuevo"] = false;
+            Application.Current.Properties["vehiculo_nuevo"] = false;
+            Application.Current.Properties["infractor"] = null;
+            Application.Current.Properties["vehiculo"] = null;
+            Application.Current.Properties["Multa"] = null;
+            Application.Current.Properties["listaDetalles"] = null;
+            Application.Current.Properties["DatosUsuario"] = null;
+            Application.Current.Properties["path_foto"] = null;
+            //y ¿todos los entry usados tmb?
 
         }
 
-        
+
         /*
          public void mail_superior_coninfo_multa(Multas multa, Infractores infractor, Vehiculos vehiculo, IList<Detalle_Multa> detalles_multa, Agentes agente) {
             var renglon = "";
