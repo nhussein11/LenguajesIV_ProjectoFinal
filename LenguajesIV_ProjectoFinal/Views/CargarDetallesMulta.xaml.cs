@@ -43,10 +43,17 @@ namespace LenguajesIV_ProjectoFinal.Views
             Shell.Current.GoToAsync($"//{nameof(NuevaMulta)}");
         }
 
-        private void Siguiente(object sender, EventArgs e)
+        private async void Siguiente(object sender, EventArgs e)
         {
-            Application.Current.Properties["listaDetalles"] = ListaDeInfraccionesAgregadas;
-            Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
+            if (ListaDeInfraccionesAgregadas.Count > 0)
+            {
+                Application.Current.Properties["listaDetalles"] = ListaDeInfraccionesAgregadas;
+                Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
+            }
+            else {
+                await DisplayAlert("Atencion!", "Debe agregar al menos una infraccion a la multa", "ok");
+            }
+            
         }
 
         private async void Agregar_Detalle(object sender, EventArgs e)
