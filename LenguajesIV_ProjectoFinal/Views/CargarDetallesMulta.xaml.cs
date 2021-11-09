@@ -41,7 +41,6 @@ namespace LenguajesIV_ProjectoFinal.Views
         private void Atras(object sender, EventArgs e)
         {
             Shell.Current.GoToAsync($"//{nameof(NuevaMulta)}");
-            Shell.Current.GoToAsync($"//{nameof(CargarDetallesMulta)}");
         }
 
         private void Siguiente(object sender, EventArgs e)

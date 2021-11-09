@@ -68,7 +68,7 @@ namespace LenguajesIV_ProjectoFinal.Views
 
             //se agrega fecha y hora
             multa.fecha_multa = this.FechaPicker.Date.ToString("{MMM d, yyyy}");
-            multa.fecha_multa = this.HoraPicker.Time.ToString();
+            multa.hora_multa = this.HoraPicker.Time.ToString();
             //Paso la multa a propiedades
             Application.Current.Properties["Multa"] = multa;
             try
@@ -97,9 +97,9 @@ namespace LenguajesIV_ProjectoFinal.Views
             catch (Exception)
             {
                 await DisplayAlert("No validó los datos", "DEBE validar los datos DNI del infractor y PATENTE del vehiculo", "OK");
-
+                
             }
-            finally { await Shell.Current.GoToAsync($"///{nameof(NuevaMulta)}"); }           
+                     
         }
     }
 }
