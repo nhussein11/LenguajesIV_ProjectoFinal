@@ -3,15 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LenguajesIV_ProjectoFinal.Views.TomarFoto">
     <ContentPage.Content>
-        <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
             <Label Text="Tomar foto de Documento de Identificacion" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
-            <Button Text="Abrir Camara" Margin="0,20,0,0" Clicked="Capturar"  ></Button>
 
-            <Grid>
-                <Button Text="Atras" HorizontalOptions="Start" Clicked="Atras"  Margin="0,20,0,0"></Button>
-                <Button Text="Siguiente" HorizontalOptions="End" Clicked="Siguiente"  Margin="0,20,0,0"></Button>
+            <Image Source="{Binding Foto_img}"></Image>
+            
+            <Button Text="Tomar Foto" Margin="0,20,0,0" Command="{Binding CapturarCommand}" Grid.Row="1"  ></Button>
 
-            </Grid>
-        </StackLayout>
+            
+                <Button Text="Atras" HorizontalOptions="Start" Clicked="Atras"  Margin="0,20,0,0" Grid.Row="2"></Button>
+                <Button Text="Siguiente" HorizontalOptions="End" Clicked="Siguiente"  Margin="0,20,0,0" Grid.Row="2"></Button>
+
+           
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

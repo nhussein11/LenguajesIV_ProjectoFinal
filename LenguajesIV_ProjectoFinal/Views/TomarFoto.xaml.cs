@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LenguajesIV_ProjectoFinal.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace LenguajesIV_ProjectoFinal.Views
         public TomarFoto()
         {
             InitializeComponent();
+            BindingContext = new FotoViewModel();
         }
 
         private void Capturar(object sender, EventArgs e)
