@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LenguajesIV_ProjectoFinal.Models;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,7 +17,10 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             InitializeComponent();
         }
-
+        private void Atras(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
+        }
         private async void GrabarMulta(object sender, EventArgs e)
         {
             //Aca recupero todos los objetos desde properties vehiculo/cod_vehiculo infractor/cod_infractor multa y detalles
@@ -51,16 +55,38 @@ namespace LenguajesIV_ProjectoFinal.Views
                 await App.SQLiteDB.SaveDetalle_MultaAsync(detalle);
             }
             await DisplayAlert("Atencion!", "Se guardaron correctamente los datos", "OK");
-            
+
             //Al final de todo mostrar alert que se guardo todo correcto
-            //Enviar correo
+            //mail al superior:
+            //mail_superior_coninfo_multa(multa_a_insertar, (Infractores)Application.Current.Properties["infractor"], (Vehiculos)Application.Current.Properties["vehiculo"], (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"], (Agentes)Application.Current.Properties["DatosUsuario"]);
             //limpiar variables de Properties y ¡todos los entry usados!
 
         }
 
-        private void Atras(object sender, EventArgs e)
-        {
-            Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
+        
+        /*
+         public void mail_superior_coninfo_multa(Multas multa, Infractores infractor, Vehiculos vehiculo, IList<Detalle_Multa> detalles_multa, Agentes agente) {
+            var renglon = "";
+            foreach (var detalle in detalles_multa) {
+                renglon = renglon + " - " + detalle.descripcion_infraccion;
+            }
+            try
+            {
+                var mensaje = new EmailMessage(
+                    "Nueva Multa Registrada. Día: "+multa.fecha_multa+" .Hora: "+multa.hora_multa, 
+                    "Se ha registrado una multa, cod: "+multa.cod_multa+" , por los siguientes motivos: "+renglon+" . El infrator es: "+ infractor.apellido_infractor+" . El vehiculo involucrado es: "+vehiculo.modelo_vehiculo, 
+                    //O algo asi:
+                    municipalidad_salta@gmail.com);
+                mensaje.BodyFormat = EmailBodyFormat.PlainText;
+                await Email.ComposeAsync(mensaje);
+            }
+            catch (Exception)
+            {
+
+                await DisplayAlert("Error!", "El servicio de mensajeria no esta disponible por el momento", "OK");
+            }
         }
+         */
+
     }
 }
