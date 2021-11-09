@@ -42,7 +42,7 @@ namespace LenguajesIV_ProjectoFinal.Services
         public Task<int> SaveDetalle_MultaAsync(Detalle_Multa det_multa)
         {
             //Acá debería hacer el insert/update de cod_multa, cod_infraccion
-            if (det_multa.cod_detalle_multa == 0)
+            if (det_multa.cod_detalle_multa != 0)
             {
                 return db.UpdateAsync(det_multa);
             }
@@ -51,7 +51,7 @@ namespace LenguajesIV_ProjectoFinal.Services
         //INFRACCIONES:
         public Task<int> SaveInfraccionesAsync(Infracciones infrac)
         {
-            if (infrac.cod_infraccion == 0)
+            if (infrac.cod_infraccion != 0)
             {
                 return db.UpdateAsync(infrac);
             }
@@ -60,7 +60,7 @@ namespace LenguajesIV_ProjectoFinal.Services
         //INFRACTORES:
         public Task<int> SaveInfractoresAsync(Infractores infractores)
         {
-            if (infractores.cod_infractores == 0)
+            if (infractores.cod_infractores != 0)
             {
                 return db.UpdateAsync(infractores);
             }
@@ -70,7 +70,7 @@ namespace LenguajesIV_ProjectoFinal.Services
         public Task<int> SaveMultassAsync(Multas multas)
         {
             //Acá debería hacer el insert/update de cod_vehiculo, cod_infractor, cod agente
-            if (multas.cod_multa == 0)
+            if (multas.cod_multa != 0)
             {
                 return db.UpdateAsync(multas);
             }
@@ -80,7 +80,7 @@ namespace LenguajesIV_ProjectoFinal.Services
         public Task<int> SaveUbicacionesAsync(Ubicaciones ubi)
         {
             //Acá debería hacer el insert/update de cod_multa
-            if (ubi.cod_ubicacion== 0)
+            if (ubi.cod_ubicacion!= 0)
             {
                 return db.UpdateAsync(ubi);
             }
@@ -89,7 +89,7 @@ namespace LenguajesIV_ProjectoFinal.Services
         //VEHICULOS:
         public Task<int> SaveVehiculosAsync(Vehiculos vehiculo)
         {
-            if (vehiculo.cod_vehiculo == 0)
+            if (vehiculo.cod_vehiculo != 0)
             {
                 return db.UpdateAsync(vehiculo);
             }
@@ -127,6 +127,14 @@ namespace LenguajesIV_ProjectoFinal.Services
         {
             return db.Table<Vehiculos>().Where(vehiculo => vehiculo.patente_dominio_vehiculo == patente).FirstOrDefaultAsync();
         }
+        //INFRACTORES:
+        /*
+         
+                 public Task<Infractores> Get_UltInfractorAgregadado_Async()
+        {
+            return db.Table<Infractores>().OrderByDescending().FirstOrDefaultAsync();
+        }
+         */
 
 
         //DELETE:
