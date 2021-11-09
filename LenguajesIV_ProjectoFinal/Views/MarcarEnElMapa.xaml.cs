@@ -55,7 +55,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             await DisplayAlert("Atencion!", "Se guardaron correctamente los datos", "OK");
 
             //mail al superior:
-
+            int cod_multa = 0;
             string agente_apellido = ((Agentes)Application.Current.Properties["DatosUsuario"]).apellido_agente;
             string agente_nombre = ((Agentes)Application.Current.Properties["DatosUsuario"]).nombre_agente;
             string apellido_infractor = ((Infractores)Application.Current.Properties["infractor"]).apellido_infractor;

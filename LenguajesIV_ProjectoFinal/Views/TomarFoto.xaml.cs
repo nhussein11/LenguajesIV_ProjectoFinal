@@ -29,7 +29,6 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         private void Siguiente(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             if (Application.Current.Properties["path_foto"] != null)
             {
                 Shell.Current.GoToAsync($"//{nameof(MarcarEnElMapa)}");
@@ -38,10 +37,6 @@ namespace LenguajesIV_ProjectoFinal.Views
             else {
                 DisplayAlert("Atencion!", "debe adjuntar una foto valida", "ok");
             }
-=======
-            
-            Shell.Current.GoToAsync($"//{nameof(MarcarEnElMapa)}");
->>>>>>> 2bf19ae6f681a21b8745d4bfd92e870092b3f211
         }
     }
 }
