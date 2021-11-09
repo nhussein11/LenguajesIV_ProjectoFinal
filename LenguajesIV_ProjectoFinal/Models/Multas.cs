@@ -21,9 +21,8 @@ namespace LenguajesIV_ProjectoFinal.Models
         public int cod_infractor { get; set; }
         public int cod_vehiculo{ get; set; }
 
-
-        
-
-
+        //Path dni
+        public string path_dni_infractorXmulta { get; set; }
+       
     }
 }

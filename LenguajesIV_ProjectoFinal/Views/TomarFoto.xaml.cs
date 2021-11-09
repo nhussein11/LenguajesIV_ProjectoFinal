@@ -26,6 +26,7 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         private void Siguiente(object sender, EventArgs e)
         {
+            
             Shell.Current.GoToAsync($"//{nameof(MarcarEnElMapa)}");
         }
     }
