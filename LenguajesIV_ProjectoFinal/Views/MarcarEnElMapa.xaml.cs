@@ -24,13 +24,15 @@ namespace LenguajesIV_ProjectoFinal.Views
             //los inserto a todos
             //Inserto, en caso de ser necesario, los datos del infractor nuevo y del vehiculo neuvo dentro de la bdd
             //Cuando guardes la multa, guarda tambien el path de la foto del DNI ->FotoViewModel
+            
+            //NO esta grabando
             if ((bool)Application.Current.Properties["infractor_nuevo"] == true)
             {
-                await App.SQLiteDB.SaveInfractoresAsync((Infractores)Application.Current.Properties["infractor"]);
+                await App.SQLiteDB.SaveInfractoresAsync((Infractores)Application.Current.Properties["infractor"]); //tira error expresion no soportada
             }
             if ((bool)Application.Current.Properties["vehiculo_nuevo"] == true)
             {
-                await App.SQLiteDB.SaveVehiculosAsync((Vehiculos)Application.Current.Properties["vehiculo"]);
+                await App.SQLiteDB.SaveVehiculosAsync((Vehiculos)Application.Current.Properties["vehiculo"]); // lo mismo aca 
             }
             //Inserto, en caso de ser necesario, los detalles
             foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"]) {
