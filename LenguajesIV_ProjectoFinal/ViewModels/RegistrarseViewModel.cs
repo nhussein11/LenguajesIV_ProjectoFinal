@@ -23,9 +23,10 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
         public string correo { get; set; }
         public bool ValidarCampos()
         {
-
-            return (
-                nombre.Length > 0
+            bool validacion;
+            try
+            {
+                validacion = nombre.Length > 0
                 && !string.IsNullOrEmpty(nombre)
                 && apellido.Length > 0
                 && !string.IsNullOrEmpty(apellido)
@@ -34,26 +35,43 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
                 && !string.IsNullOrEmpty(usuario)
                 && contraseña.Length > 0
                 && !string.IsNullOrEmpty(contraseña)
-                 &&  correo.Length > 0
-                && !string.IsNullOrEmpty(correo)
-                );
+                 && correo.Length > 0
+                && !string.IsNullOrEmpty(correo);
+            }
+            catch (Exception)
+            {
+                validacion = false;
+                
+            }
+
+            return validacion;
 
         }
         public async Task<bool> ValidarRegistroAsync() {
-            // consultar a bd --> traer usuarios
-            var agenList = await App.SQLiteDB.Get_Agentes_Async();
-            // validar nombre de usuario y dni --> sean unicos
-            foreach (var agente in agenList) {
-                if (agente.user_agente == this.usuario)
+            try
+            {
+                // consultar a bd --> traer usuarios
+                var agenList = await App.SQLiteDB.Get_Agentes_Async();
+                // validar nombre de usuario y dni --> sean unicos
+                foreach (var agente in agenList)
                 {
-                    return false;
+                    if (agente.user_agente == this.usuario)
+                    {
+                        return false;
+                    }
+                    else if (agente.dni_agente == Convert.ToInt32(this.dni))
+                    {
+                        return false;
+                    }
                 }
-                else if (agente.dni_agente == Convert.ToInt32(this.dni))
-                {
-                    return false;
-                }
+                return true;
             }
-            return true;
+            catch (Exception)
+            {
+
+                return false;
+            }
+            
         }
         private async void Registrar_Usuario()
         {

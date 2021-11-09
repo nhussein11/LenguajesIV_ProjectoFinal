@@ -15,15 +15,15 @@
                 <Label Text="Datos Personales" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
             
             <Entry Placeholder="Nombre" Margin="0" Text="{Binding nombre}"></Entry>
-            <Entry Placeholder="Apellido" Margin="0" Text="{Binding apellido}"></Entry>
-            
-                <Entry Placeholder="D.N.I" Keyboard="Numeric" Margin="0,0,0,30" Text="{Binding dni}"></Entry> 
+                <Entry Placeholder="Apellido" Margin="0" Text="{Binding apellido}" ></Entry>
+
+                <Entry Placeholder="D.N.I" Keyboard="Numeric" Margin="0,0,0,30" Text="{Binding dni}" ></Entry> 
             
             <Label Text="Datos de Inicio de Sesion" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
-                
-            <Entry Placeholder="Correo electronico" Text="{Binding correo}"></Entry>
-               <Entry Placeholder="Usuario" Text="{Binding usuario}"></Entry>
-            <Entry Placeholder="Contraseña" IsPassword="True" Text="{Binding contraseña}"></Entry>
+
+                <Entry Placeholder="Correo electronico" Text="{Binding correo}" ></Entry>
+                <Entry Placeholder="Usuario" Text="{Binding usuario}" ></Entry>
+                <Entry Placeholder="Contraseña" IsPassword="True" Text="{Binding contraseña}" ></Entry>
             <Button
                    VerticalOptions="Center"
                 Text="Registrase"

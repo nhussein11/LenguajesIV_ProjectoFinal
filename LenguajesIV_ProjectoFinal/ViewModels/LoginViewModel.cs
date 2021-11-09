@@ -17,22 +17,43 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
         public  string usuario { get; set; }
         public  string contraseña { get; set; }
         public bool ValidarCampos() {
-            return usuario.Length > 0
+            bool validacion;
+            try
+            {
+                validacion = usuario.Length > 0
                     && !string.IsNullOrEmpty(usuario)
                     && contraseña.Length > 0
                     && !string.IsNullOrEmpty(contraseña);
+                return validacion;
+            }
+            catch (Exception)
+            {
+
+                validacion = false;
+                return validacion;
+            }
+        
         }
         public async Task<bool> ValidarUsuarioAsync()
         {
-            //Buscar en bd credenciales
-            Agentes agen = new Agentes();
-            agen = await App.SQLiteDB.Get_Agentes_byUserandPassword_Async(this.usuario, this.contraseña);
-            if (agen != null)
+            try
             {
-                Application.Current.Properties["DatosUsuario"] = agen;
-                return true;
+                //Buscar en bd credenciales
+                Agentes agen = new Agentes();
+                agen = await App.SQLiteDB.Get_Agentes_byUserandPassword_Async(this.usuario, this.contraseña);
+                if (agen != null)
+                {
+                    Application.Current.Properties["DatosUsuario"] = agen;
+                    return true;
+                }
+                else { return false; }
             }
-            else { return false; }
+            catch (Exception)
+            {
+
+                return false;
+            }
+           
         }
 
         private async void OnLoginClicked(object obj)
