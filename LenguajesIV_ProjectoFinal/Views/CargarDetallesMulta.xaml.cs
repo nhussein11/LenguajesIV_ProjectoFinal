@@ -34,10 +34,6 @@ namespace LenguajesIV_ProjectoFinal.Views
             BindingContext = this;
           
         }
-        /*Metodos que necesitamos
-         Grabar detalle en bd
-         */
-
         private void Atras(object sender, EventArgs e)
         {
             Shell.Current.GoToAsync($"//{nameof(NuevaMulta)}");
