@@ -36,6 +36,10 @@ namespace LenguajesIV_ProjectoFinal.Views
                 await App.SQLiteDB.SaveDetalle_MultaAsync(detalle);
             }
 
+            //Al final de todo mostrar alert que se guardo todo correcto
+            //Enviar correo
+            //limpiar variables de Properties
+
         }
 
         private void Atras(object sender, EventArgs e)
