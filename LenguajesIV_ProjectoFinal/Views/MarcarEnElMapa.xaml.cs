@@ -55,27 +55,40 @@ namespace LenguajesIV_ProjectoFinal.Views
             await DisplayAlert("Atencion!", "Se guardaron correctamente los datos", "OK");
 
             //mail al superior:
-            int cod_multa = 0;
-            string agente_apellido = ((Agentes)Application.Current.Properties["DatosUsuario"]).apellido_agente;
-            string agente_nombre = ((Agentes)Application.Current.Properties["DatosUsuario"]).nombre_agente;
-            string apellido_infractor = ((Infractores)Application.Current.Properties["infractor"]).apellido_infractor;
-            string nombre_infractor = ((Infractores)Application.Current.Properties["infractor"]).nombre_infractor;
-            string patente_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).patente_dominio_vehiculo; // lo mismo aca 
-            string modelo_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).modelo_vehiculo; // lo mismo aca 
-            string descricpion_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).caracteristicas_vehiculo; // lo mismo aca 
-            string motivo_descripcion_importe = "";
-
-            foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"])
+            try
             {
-                motivo_descripcion_importe += "infraccion: " + detalle.descripcion_infraccion + ",Observaciones: " + detalle.observacion_detalle_multa + ",Importe: " + detalle.subtotal_detalle_multa + "\n";
+
+                int cod_multa = 0;
+                string agente_apellido = ((Agentes)Application.Current.Properties["DatosUsuario"]).apellido_agente;
+                string agente_nombre = ((Agentes)Application.Current.Properties["DatosUsuario"]).nombre_agente;
+                string apellido_infractor = ((Infractores)Application.Current.Properties["infractor"]).apellido_infractor;
+                string nombre_infractor = ((Infractores)Application.Current.Properties["infractor"]).nombre_infractor;
+                string patente_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).patente_dominio_vehiculo;
+                string modelo_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).modelo_vehiculo;
+                string descricpion_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).caracteristicas_vehiculo;
+                string motivo_descripcion_importe = "";
+
+                foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"])
+                {
+                    motivo_descripcion_importe += "infraccion: " + detalle.descripcion_infraccion + ",Observaciones: " + detalle.observacion_detalle_multa + ",Importe: " + detalle.subtotal_detalle_multa + "\n";
+                }
+
+                string Body = $"Se registro con exito la multa codigo:{cod_multa},labrada por el agente:{agente_apellido},{agente_nombre}.\n El infractor fue:{apellido_infractor},{nombre_infractor}.\n A borde de un vehiculo dominio:{patente_vehiculo}, Modelo:{modelo_vehiculo} cuya descripcion coincide con:{descricpion_vehiculo}.\n La multa esta dada en consta de los sigueintes conceptos:\n {motivo_descripcion_importe}";
+                var mensaje = new EmailMessage("Nueva Multa generada", Body, "superior@salta.com.ar");
+                mensaje.BodyFormat = EmailBodyFormat.PlainText;
+                EmailAttachment foto_dni = new EmailAttachment((string)Application.Current.Properties["path_foto"]);
+                mensaje.Attachments.Add(foto_dni);
+                await Email.ComposeAsync(mensaje);
+
+
+            }
+            catch (Exception)
+            {
+
+                await DisplayAlert("Error!", "El servicio de mensajeria no esta disponible por el momento", "OK");
+
             }
 
-            string Body = $"Se registro con exito la multa codigo:{cod_multa},labrada por el agente:{agente_apellido},{agente_nombre}.\n El infractor fue:{apellido_infractor},{nombre_infractor}.\n A borde de un vehiculo dominio:{patente_vehiculo}, Modelo:{modelo_vehiculo} cuya descripcion coincide con:{descricpion_vehiculo}.\n La multa esta dada en consta de los sigueintes conceptos:\n {motivo_descripcion_importe}";
-            var mensaje = new EmailMessage("Nueva Multa generada", Body, "superior@salta.com.ar");
-            mensaje.BodyFormat = EmailBodyFormat.PlainText;
-            EmailAttachment foto_dni = new EmailAttachment((string)Application.Current.Properties["path_foto"]);
-            mensaje.Attachments.Add(foto_dni);
-            await Email.ComposeAsync(mensaje);
 
             //limpiar variables de Properties 
             Application.Current.Properties["infractor_nuevo"] = false;
@@ -86,7 +99,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             Application.Current.Properties["listaDetalles"] = null;
             Application.Current.Properties["DatosUsuario"] = null;
             Application.Current.Properties["path_foto"] = null;
-           
+           // Los entrys tambien los podriamos borrar 
 
         }
 
@@ -112,7 +125,6 @@ namespace LenguajesIV_ProjectoFinal.Views
             catch (Exception)
             {
 
-                await DisplayAlert("Error!", "El servicio de mensajeria no esta disponible por el momento", "OK");
             }
         }
          */
