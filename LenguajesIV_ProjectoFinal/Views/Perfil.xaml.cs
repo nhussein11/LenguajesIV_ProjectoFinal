@@ -36,7 +36,7 @@ namespace LenguajesIV_ProjectoFinal.Views
                 dni_agente = Convert.ToInt32(this.txtdni.Text),
                 domicilio_agente = this.txtdomicilio.Text,
                 telefono_agente = Convert.ToInt64(this.txttelefono.Text),
-                email_agente = this.txtcorreo.Text.ToString()
+                email_agente = this.txtcorreo.Text
             };
             await App.SQLiteDB.SaveAgentesAsync(agente_conectado);
             //Actualizo los datos en el obj usuario conectado
