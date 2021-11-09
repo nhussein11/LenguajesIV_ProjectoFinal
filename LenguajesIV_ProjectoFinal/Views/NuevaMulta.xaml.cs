@@ -69,6 +69,9 @@ namespace LenguajesIV_ProjectoFinal.Views
             //se agrega fecha y hora
             multa.fecha_multa = this.FechaPicker.Date.ToString("{MMM d, yyyy}");
             multa.hora_multa = this.HoraPicker.Time.ToString();
+            //Agrego el codigo del agente
+            multa.cod_agente = ((Agentes)Application.Current.Properties["DatosUsuario"]).cod_agente;
+            multa.lugar_multa = this.txtLugar.Text;
             //Paso la multa a propiedades
             Application.Current.Properties["Multa"] = multa;
             try
@@ -78,7 +81,7 @@ namespace LenguajesIV_ProjectoFinal.Views
                     Infractores infractor = new Infractores();
                     infractor.apellido_infractor = this.txtapellido.Text;
                     infractor.dni_infractor = (this.txtdni.Text);
-                    infractor.nombre_infractor = this.txtdomicilio.Text;
+                    infractor.nombre_infractor = this.txtnombre.Text; 
                     infractor.telefono_infractor = (this.txttelefono.Text);
                     infractor.domicilio_infractor = this.txtdomicilio.Text;
                     Application.Current.Properties["infractor"] = infractor;

@@ -58,9 +58,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             detalle.subtotal_detalle_multa = Convert.ToInt32(this.txtPrecio.Text);
             detalle.testimonio_agente = this.txtTestimonio.Text;
             detalle.observacion_detalle_multa = this.txtObservaciones.Text;
-            //recupero cod de multa desde la otra pantalla 
-            int cod_multa = ((Multas)Application.Current.Properties["Multa"]).cod_multa;
-            detalle.cod_multa = cod_multa;
+            //el cod de la multa se lo agregamos cuando insertemos la multa en la BD y nos devuelva el codigo
             //agrego detalle a la lista
             ListaDeInfraccionesAgregadas.Add(detalle);
             //reseteo campos
