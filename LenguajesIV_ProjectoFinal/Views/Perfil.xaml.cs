@@ -39,7 +39,10 @@ namespace LenguajesIV_ProjectoFinal.Views
                 email_agente = this.txtcorreo.Text.ToString()
             };
             await App.SQLiteDB.SaveAgentesAsync(agente_conectado);
-           
+            //Actualizo los datos en el obj usuario conectado
+            Application.Current.Properties["DatosUsuario"] = agente_conectado;
+
+
         }
         public async void Llenar_campos_usuarioactivo(string user, string contra) 
         {
