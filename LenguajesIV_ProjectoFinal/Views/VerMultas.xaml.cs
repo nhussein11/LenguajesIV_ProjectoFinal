@@ -19,6 +19,7 @@ namespace LenguajesIV_ProjectoFinal.Views
         public  VerMultas()
         {
             InitializeComponent();
+            ListadoMultasRealizadas = new List<MultasRealizadas>();
             BindingContext = this;
             //Nico: Metodo para traerse las multas de ese agente
             //traerse el infractor de una multa
@@ -79,7 +80,25 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         private async void ActualizarLista(object sender, EventArgs e)
         {
-             Cargar_Multas_Realizadas();
+            //multa hardcodeada para probar que se este viendo bien --borrar si necesitas
+            ListadoMultasRealizadas.Add(new MultasRealizadas
+            {
+                nombre_agente = "Alejo",
+                apellido_agente="Torres",
+                dni_infractor="43431374",
+                lugar_multa="casa",
+                latitud_ubicacion= Convert.ToString(-24.7704124),
+                longitud_ubicacion= Convert.ToString(-65.4163536),
+                patente_dominio_vehiculo="adh123",
+                fecha_multa="12/12/21"
+
+            });
+
+            await Shell.Current.GoToAsync($"//{nameof(Perfil)}"); //old but gold truco de "actualizar" vista
+            await Shell.Current.GoToAsync($"//{nameof(VerMultas)}");
+            Cargar_Multas_Realizadas();
+            // esto desp lo ponemos en el constructor de la vista, por ahora hasta que lo arreglemos, queda en el boton 
+
         }
     }
 }
