@@ -26,7 +26,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             //NO hace falta los detalles 
             //crear Obj multa con esos datos y meterlo en ListadoMultasRealizadas
             //Debe ser asincrónico --> me llevo todo a una función:
-            Cargar_Multas_Realizadas();
+            
 
 
         }
@@ -50,12 +50,17 @@ namespace LenguajesIV_ProjectoFinal.Views
                 };
                 this.ListadoMultasRealizadas.Add(multaRealizada);
             }
-            //NO hace falta los detalles --> OK 
+           
         }
         private void Abrir_Ubicacion_Multa(object sender, SelectedItemChangedEventArgs e)
         {
             // con la lat y long de la multa -> abrir google maps 
             //e.SelectedItem tiene el obj que seleccionaste 
+        }
+
+        private async void ActualizarLista(object sender, EventArgs e)
+        {
+             Cargar_Multas_Realizadas();
         }
     }
 }

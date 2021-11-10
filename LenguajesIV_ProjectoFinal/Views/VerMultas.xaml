@@ -6,13 +6,13 @@
     <ContentPage.Content>
         <StackLayout Padding="25"   HorizontalOptions="FillAndExpand">
             <Label Text="Multas Realizadas" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
-
+            <Button Text="actulizar" Clicked="ActualizarLista"></Button>
             <ListView ItemsSource="{Binding ListadoMultasRealizadas}" ItemSelected="Abrir_Ubicacion_Multa"  >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell
-                                Text="" 
-                                Detail="">
+                                Text="{Binding lugar_multa}" 
+                                Detail="{Binding dni_infractor}">
                         </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
