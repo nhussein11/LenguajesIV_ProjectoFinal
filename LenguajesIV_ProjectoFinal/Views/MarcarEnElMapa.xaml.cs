@@ -49,11 +49,15 @@ namespace LenguajesIV_ProjectoFinal.Views
             /*Se me hace que no esta mostrando el metodo en VerMultas porque no estas registrando ninguna multa*/
             await App.SQLiteDB.SaveMultassAsync(multa_a_insertar);
             int cod_multa_insertada = (await App.SQLiteDB.Get_Cod_UltimaMulta_Async()).cod_multa;
+            //Actualizo la FK de la ubicacion registrada
+            ((Ubicaciones)Application.Current.Properties["Ubicacion"]).cod_multa = cod_multa_insertada;
+            //Update en la bdd
+            await App.SQLiteDB.SaveUbicacionesAsync(((Ubicaciones)Application.Current.Properties["Ubicacion"]));
             
             //Inserto, en caso de ser necesario, los detalles
             foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"]) {
                 detalle.cod_multa = cod_multa_insertada;
-                //Antes de insertar los detalles,ponerles en cod_multa el codigo de la multa que se acaba de registrar
+                
                 await App.SQLiteDB.SaveDetalle_MultaAsync(detalle);
             }
 
@@ -63,7 +67,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             try
             {
 
-                int cod_multa = 0; // Esto cambiar por el codigo de la multa que se acaba de registrar
+                int cod_multa = (await App.SQLiteDB.Get_Cod_UltimaMulta_Async()).cod_multa;
                 string agente_apellido = ((Agentes)Application.Current.Properties["DatosUsuario"]).apellido_agente;
                 string agente_nombre = ((Agentes)Application.Current.Properties["DatosUsuario"]).nombre_agente;
                 string apellido_infractor = ((Infractores)Application.Current.Properties["infractor"]).apellido_infractor;
@@ -146,12 +150,8 @@ namespace LenguajesIV_ProjectoFinal.Views
             {
                 latitud_ubicacion = this.txtLat.Text,
                 longitud_ubicacion = this.txtLong.Text,
-                cod_multa = ((Multas)Application.Current.Properties["Multa"]).cod_multa
-                //No es este cod multa, creo que es cod_multa_insertada el que tenes que poner 
-                //y luego grabarla en la base de datos
-                //antes de probar nada borra la bd anterior porque deben haver multas sin ubicacion que estan causando el error
             };
-
+            Application.Current.Properties["Ubicacion"] = ubicacionXmulta;
         } 
     } 
 }

@@ -35,13 +35,6 @@ namespace LenguajesIV_ProjectoFinal.Views
         public async void Cargar_Multas_Realizadas() 
         {
             int cod_agente_activo = ((Agentes)Application.Current.Properties["DatosUsuario"]).cod_agente;
-   
-
-            // NO esta trayendo las multas este metodo no lo puedo ver en el debugger porque el return es un oneliner, para mi pasa algo ahi, trata de hacerlo por partes
-            //Avisame si hiciste algun cambio en la bd, hay que ver si se esta grabando bien la multa con el codigo del agente el vehiculo y la ubicacion que corresponde 
-            // lo que le cambies ahi seguro lo tenes que cambiar en Get_InfractorxMulta_Async Get_VehiculoxMulta_Async Get_UbicacionxMulta_Async
-            
-            
             
             List<Multas> lista_multas = await App.SQLiteDB.Get_MultasxAgente_Async(cod_agente_activo);
             foreach (Multas multa in lista_multas)
@@ -84,7 +77,7 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         }
 
-        private async void ActualizarLista(object sender, EventArgs e)
+        public   async void ActualizarLista(object sender, EventArgs e)
         {
             Cargar_Multas_Realizadas();
             //multa hardcodeada para probar que se este viendo bien --borrar si necesitas
