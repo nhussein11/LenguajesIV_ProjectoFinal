@@ -5,7 +5,6 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using LenguajesIV_ProjectoFinal.Models;
 using System.Collections.ObjectModel;
-
 namespace LenguajesIV_ProjectoFinal.ViewModels
 {
     class CargarDetalleMultaViewModel

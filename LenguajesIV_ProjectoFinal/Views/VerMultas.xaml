@@ -4,10 +4,19 @@
              x:Class="LenguajesIV_ProjectoFinal.Views.VerMultas"
              Background="#F5E1C9">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="25"   HorizontalOptions="FillAndExpand">
+            <Label Text="Multas Realizadas" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
+
+            <ListView ItemsSource="{Binding ListadoMultasRealizadas}" ItemSelected="Abrir_Ubicacion_Multa"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell
+                                Text=""
+                                Detail="">
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
