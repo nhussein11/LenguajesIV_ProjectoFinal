@@ -25,7 +25,7 @@ namespace LenguajesIV_ProjectoFinal.Views
         private async void GrabarMulta(object sender, EventArgs e)
         {
             //Guardo la ubicacion, lo pongo dentro de una funcion por prolijidad nomás pero si queres meterlo aca adentro no pasa nada
-            Get_Location();
+            //Get_Location();
             //Inserto infractor
             if ((bool)Application.Current.Properties["infractor_nuevo"])
             {
