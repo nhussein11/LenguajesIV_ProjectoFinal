@@ -19,6 +19,12 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             InitializeComponent();
             BindingContext = this;
+            //Nico: Metodo para traerse las multas de ese agente
+            //traerse el infractor de una multa
+            //traerse el vehiculo de una multa
+            //traerse la ubicacion de una multa
+            //NO hace falta los detalles 
+            //crear Obj multa con esos datos y meterlo en ListadoMultasRealizadas
             //Debe ser asincrónico --> me llevo todo a una función:
             Cargar_Multas_Realizadas();
 
@@ -49,7 +55,7 @@ namespace LenguajesIV_ProjectoFinal.Views
         private void Abrir_Ubicacion_Multa(object sender, SelectedItemChangedEventArgs e)
         {
             // con la lat y long de la multa -> abrir google maps
-            
+
         }
     }
 }
