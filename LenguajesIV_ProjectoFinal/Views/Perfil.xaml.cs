@@ -27,6 +27,8 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             //metodo que haga update en la tabla agentes, donde el usuario sea (string)Application.Current.Properties["usuario"]
             //No puede cambiar su nombre de usuario, nos hace la vida mas facil
+            string email_agente = this.txtcorreo.Text;
+
             Agentes agente_conectado = new Agentes {
                 cod_agente =((Agentes) Application.Current.Properties["DatosUsuario"]).cod_agente,
                 user_agente = ((Agentes)Application.Current.Properties["DatosUsuario"]).user_agente,
@@ -35,8 +37,8 @@ namespace LenguajesIV_ProjectoFinal.Views
                 apellido_agente = this.txtapellido.Text,
                 dni_agente = Convert.ToInt32(this.txtdni.Text),
                 domicilio_agente = this.txtdomicilio.Text,
+                email_agente = this.txtcorreo.Text,
                 telefono_agente = Convert.ToInt64(this.txttelefono.Text),
-                email_agente = this.txtcorreo.Text
             };
             await App.SQLiteDB.SaveAgentesAsync(agente_conectado);
             //Actualizo los datos en el obj usuario conectado
