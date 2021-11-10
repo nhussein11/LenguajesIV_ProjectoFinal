@@ -56,7 +56,7 @@ namespace LenguajesIV_ProjectoFinal.Views
                 await App.SQLiteDB.SaveDetalle_MultaAsync(detalle);
             }
 
-            await DisplayAlert("Atencion!", "Se guardaron correctamente los datos", "OK");
+            await DisplayAlert("Atencion!", "Se guardaron correctamente los datos,se procedera a redactarse un correo al Superior", "OK");
 
             //mail al superior:
             try

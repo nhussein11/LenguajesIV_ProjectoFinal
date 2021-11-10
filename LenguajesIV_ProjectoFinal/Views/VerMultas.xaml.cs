@@ -24,12 +24,14 @@ namespace LenguajesIV_ProjectoFinal.Views
             //traerse el vehiculo de una multa
             //traerse la ubicacion de una multa
             //NO hace falta los detalles 
+            //crear Obj multa con esos datos y meterlo en ListadoMultasRealizadas
 
         }
 
         private void Abrir_Ubicacion_Multa(object sender, SelectedItemChangedEventArgs e)
         {
             // con la lat y long de la multa -> abrir google maps 
+            //e.SelectedItem tiene el obj que seleccionaste 
         }
     }
 }

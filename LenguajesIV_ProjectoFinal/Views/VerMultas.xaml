@@ -11,7 +11,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell
-                                Text=""
+                                Text="" 
                                 Detail="">
                         </TextCell>
                     </DataTemplate>
