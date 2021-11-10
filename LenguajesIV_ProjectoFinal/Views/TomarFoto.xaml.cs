@@ -35,7 +35,7 @@ namespace LenguajesIV_ProjectoFinal.Views
 
             }
             else {
-                DisplayAlert("Atencion!", "debe adjuntar una foto valida", "ok");
+                DisplayAlert("Atencion!", "Debe adjuntar una foto valida", "OK");
             }
         }
     }

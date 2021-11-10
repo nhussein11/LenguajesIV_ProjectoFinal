@@ -21,10 +21,11 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
         }
+        
         private async void GrabarMulta(object sender, EventArgs e)
         {
-            //aca van a estar los datos de la localizacion tambien
-            
+            //Guardo la ubicacion, lo pongo dentro de una funcion por prolijidad nomás pero si queres meterlo aca adentro no pasa nada
+            Get_Location();
             //Inserto infractor
             if ((bool)Application.Current.Properties["infractor_nuevo"])
             {
@@ -71,23 +72,19 @@ namespace LenguajesIV_ProjectoFinal.Views
 
                 foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"])
                 {
-                    motivo_descripcion_importe += "infraccion: " + detalle.descripcion_infraccion + ",Observaciones: " + detalle.observacion_detalle_multa + ",Importe: " + detalle.subtotal_detalle_multa + "\n";
+                    motivo_descripcion_importe += "infraccion: " + detalle.descripcion_infraccion + ". Observaciones: " + detalle.observacion_detalle_multa + ". Importe: " + detalle.subtotal_detalle_multa + "\n";
                 }
 
-                string Body = $"Se registro con exito la multa codigo:{cod_multa},labrada por el agente:{agente_apellido},{agente_nombre}.\n El infractor fue:{apellido_infractor},{nombre_infractor}.\n A borde de un vehiculo dominio:{patente_vehiculo}, Modelo:{modelo_vehiculo} cuya descripcion coincide con:{descricpion_vehiculo}.\n La multa esta dada en consta de los sigueintes conceptos:\n {motivo_descripcion_importe}";
+                string Body = $"Se registro con exito la multa codigo: {cod_multa}, labrada por el agente: {agente_apellido}, {agente_nombre}.\n El infractor fue: {apellido_infractor}, {nombre_infractor}.\n A borde de un vehiculo dominio: {patente_vehiculo}, modelo: {modelo_vehiculo} cuya descripcion coincide con: {descricpion_vehiculo}.\n La multa esta dada en consta de los siguientes conceptos:\n {motivo_descripcion_importe}";
                 var mensaje = new EmailMessage("Nueva Multa generada", Body, "superior@salta.com.ar");
                 mensaje.BodyFormat = EmailBodyFormat.PlainText;
                 EmailAttachment foto_dni = new EmailAttachment((string)Application.Current.Properties["path_foto"]);
                 mensaje.Attachments.Add(foto_dni);
                 await Email.ComposeAsync(mensaje);
-
-
             }
             catch (Exception)
             {
-
                 await DisplayAlert("Error!", "El servicio de mensajeria no esta disponible por el momento", "OK");
-
             }
 
 
@@ -152,20 +149,19 @@ namespace LenguajesIV_ProjectoFinal.Views
             }
             try
             {
-                var mensaje = new EmailMessage(
-                    "Nueva Multa Registrada. Día: "+multa.fecha_multa+" .Hora: "+multa.hora_multa, 
-                    "Se ha registrado una multa, cod: "+multa.cod_multa+" , por los siguientes motivos: "+renglon+" . El infrator es: "+ infractor.apellido_infractor+" . El vehiculo involucrado es: "+vehiculo.modelo_vehiculo, 
-                    //O algo asi:
-                    municipalidad_salta@gmail.com);
-                mensaje.BodyFormat = EmailBodyFormat.PlainText;
-                await Email.ComposeAsync(mensaje);
+                location = await Geolocation.GetLocationAsync(new GeolocationRequest
+                {
+                    DesiredAccuracy = GeolocationAccuracy.Medium,
+                    Timeout = TimeSpan.FromSeconds(30)
+                });
             }
-            catch (Exception)
+            Ubicaciones ubi = new Ubicaciones
             {
-
-            }
+                latitud_ubicacion = location.Latitude.ToString(),
+                longitud_ubicacion = location.Longitude.ToString(),
+                cod_multa = ((Multas)Application.Current.Properties["Multa"]).cod_multa
+            };
+            await App.SQLiteDB.SaveUbicacionesAsync(ubi);
         }
-         */
-
     }
 }
