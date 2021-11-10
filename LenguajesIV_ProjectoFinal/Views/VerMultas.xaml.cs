@@ -54,8 +54,8 @@ namespace LenguajesIV_ProjectoFinal.Views
         }
         private void Abrir_Ubicacion_Multa(object sender, SelectedItemChangedEventArgs e)
         {
-            // con la lat y long de la multa -> abrir google maps 
-            //e.SelectedItem tiene el obj que seleccionaste 
+            // con la lat y long de la multa -> abrir google maps
+
         }
 
         private async void ActualizarLista(object sender, EventArgs e)
