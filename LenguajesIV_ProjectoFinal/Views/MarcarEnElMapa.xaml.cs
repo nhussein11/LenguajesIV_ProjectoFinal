@@ -24,17 +24,16 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         private async void GrabarMulta(object sender, EventArgs e)
         {
-            //Guardo la ubicacion, lo pongo dentro de una funcion por prolijidad nomás pero si queres meterlo aca adentro no pasa nada
             //Get_Location();
             //Inserto infractor
             if ((bool)Application.Current.Properties["infractor_nuevo"])
             {
-                await App.SQLiteDB.SaveInfractoresAsync((Infractores)Application.Current.Properties["infractor"]); //tira error expresion no soportada
+                await App.SQLiteDB.SaveInfractoresAsync((Infractores)Application.Current.Properties["infractor"]); 
             }
             //Inserto vehiculo
             if ((bool)Application.Current.Properties["vehiculo_nuevo"])
             {
-                await App.SQLiteDB.SaveVehiculosAsync((Vehiculos)Application.Current.Properties["vehiculo"]); // lo mismo aca 
+                await App.SQLiteDB.SaveVehiculosAsync((Vehiculos)Application.Current.Properties["vehiculo"]); 
             }
             //Inserto la multa
             Multas multa_a_insertar = new Multas();
@@ -45,10 +44,11 @@ namespace LenguajesIV_ProjectoFinal.Views
             multa_a_insertar.path_dni_infractorXmulta = (string)Application.Current.Properties["path_foto"];
             /*ACA faltaria una mas que sería para el cod_ubicacion, que recien lo vamos a tener cuando veamos lo del mapa*/
 
-            //Application.Current.Properties["latitud"]
-            //Application.Current.Properties["longitud"]
-
             //insertarlas -> devuelve cod_ubicacion -> ponerselo a la multa -> ingresar multa
+
+            /*Se me hace que no esta mostrando el metodo en VerMultas porque no estas registrando ninguna multa*/
+
+
 
             //Inserto, en caso de ser necesario, los detalles
             foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"]) {
@@ -140,7 +140,7 @@ namespace LenguajesIV_ProjectoFinal.Views
                 NavigationMode = NavigationMode.Default
 
             });
-            //Yo insertaria aca la ubicacion en la bdd y queda conectado con la multa, por commo hice las tablas: Ubicaciones tiene la FK que refiere a Multas
+            // Como lo veas mejor 
             Ubicaciones ubicacionXmulta = new Ubicaciones
             {
                 latitud_ubicacion = this.txtLat.Text,
@@ -151,32 +151,4 @@ namespace LenguajesIV_ProjectoFinal.Views
         } 
     } 
 }
-
         //Nico
-        //mail_superior_coninfo_multa(multa_a_insertar, (Infractores)Application.Current.Properties["infractor"], (Vehiculos)Application.Current.Properties["vehiculo"], (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"], (Agentes)Application.Current.Properties["DatosUsuario"]);
-
-        /*
-         public void mail_superior_coninfo_multa(Multas multa, Infractores infractor, Vehiculos vehiculo, IList<Detalle_Multa> detalles_multa, Agentes agente) {
-            var renglon = "";
-            foreach (var detalle in detalles_multa) {
-                renglon = renglon + " - " + detalle.descripcion_infraccion;
-            }
-            try
-            {
-                location = await Geolocation.GetLocationAsync(new GeolocationRequest
-                {
-                    DesiredAccuracy = GeolocationAccuracy.Medium,
-                    Timeout = TimeSpan.FromSeconds(30)
-                });
-            }
-            Ubicaciones ubi = new Ubicaciones
-            {
-                latitud_ubicacion = location.Latitude.ToString(),
-                longitud_ubicacion = location.Longitude.ToString(),
-                cod_multa = ((Multas)Application.Current.Properties["Multa"]).cod_multa
-            };
-            await App.SQLiteDB.SaveUbicacionesAsync(ubi);
-        }
-    }
-}
-        */
