@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using LenguajesIV_ProjectoFinal.Services;
 using LenguajesIV_ProjectoFinal.Models;
+using Plugin.Messaging;
+
 namespace LenguajesIV_ProjectoFinal.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -25,9 +27,22 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             try
             {
-                var mensaje = new EmailMessage(this.txtAsunto.Text, this.txtMensaje.Text, this.txtPara.Text);
-                mensaje.BodyFormat = EmailBodyFormat.PlainText;
-                await Email.ComposeAsync(mensaje);
+                var emailMessenger = CrossMessaging.Current.EmailMessenger;
+                if (emailMessenger.CanSendEmail)
+                {
+
+                    // Alternatively use EmailBuilder fluent interface to construct more complex e-mail with multiple recipients, bcc, attachments etc.
+                    var email = new EmailMessageBuilder()
+                      .To(this.txtPara.Text)
+                      .Subject(this.txtAsunto.Text)
+                      .Body(this.txtMensaje.Text)
+                      .Build();
+
+                    emailMessenger.SendEmail(email);
+                }
+                //var mensaje = new EmailMessage(this.txtAsunto.Text, this.txtMensaje.Text, this.txtPara.Text);
+                //mensaje.BodyFormat = EmailBodyFormat.PlainText;
+                //await Email.ComposeAsync(mensaje);
             }
             catch (Exception)
             {

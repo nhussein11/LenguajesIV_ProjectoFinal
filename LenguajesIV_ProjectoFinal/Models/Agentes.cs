@@ -19,7 +19,7 @@ namespace LenguajesIV_ProjectoFinal.Models
         public string user_agente { get; set; }
         [MaxLength(50)]
         public string password_agente { get; set; }
-        [MaxLength(70)]
+        
         public string email_agente { get; set; }
         public int dni_agente { get; set; }
         public long telefono_agente { get; set; }
