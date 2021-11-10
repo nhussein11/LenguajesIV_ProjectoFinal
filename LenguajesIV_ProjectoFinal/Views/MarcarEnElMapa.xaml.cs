@@ -124,7 +124,7 @@ namespace LenguajesIV_ProjectoFinal.Views
                 this.txtLong.Text = Convert.ToString(location.Longitude);
                 //para pasar ubicacion a otras paginas
                 Application.Current.Properties["latitud"] = Convert.ToString(location.Latitude);
-                Application.Current.Properties["longitud"] = Convert.ToString(location.Longitude);
+                 Application.Current.Properties["longitud"] = Convert.ToString(location.Longitude);
 
 
             }
