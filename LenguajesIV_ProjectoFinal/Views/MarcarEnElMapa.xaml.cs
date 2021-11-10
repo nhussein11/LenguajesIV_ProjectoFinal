@@ -130,7 +130,6 @@ namespace LenguajesIV_ProjectoFinal.Views
                 //para pasar ubicacion a otras paginas
                 Application.Current.Properties["latitud"] = Convert.ToString(location.Latitude);
                 Application.Current.Properties["longitud"] = Convert.ToString(location.Longitude);
-                //await Navigation.PushAsync(new MapaConfirmarUbicacion());
             }
             await Map.OpenAsync(Convert.ToDouble(Application.Current.Properties["latitud"]), Convert.ToDouble(Application.Current.Properties["longitud"]), new MapLaunchOptions
             {
