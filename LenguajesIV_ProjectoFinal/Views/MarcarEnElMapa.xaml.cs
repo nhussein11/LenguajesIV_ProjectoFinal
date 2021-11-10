@@ -62,7 +62,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             try
             {
 
-                int cod_multa = 0;
+                int cod_multa = 0; // Esto cambiar por el codigo de la multa que se acaba de registrar
                 string agente_apellido = ((Agentes)Application.Current.Properties["DatosUsuario"]).apellido_agente;
                 string agente_nombre = ((Agentes)Application.Current.Properties["DatosUsuario"]).nombre_agente;
                 string apellido_infractor = ((Infractores)Application.Current.Properties["infractor"]).apellido_infractor;
