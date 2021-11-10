@@ -22,21 +22,21 @@ namespace LenguajesIV_ProjectoFinal.Services
             db.CreateTableAsync<Vehiculos>().Wait();
         }
 
-                                 //CRUD:
+        //CRUD:
 
-                                //INSERT + UPDATE
-                                /// <summary>
-                                /// Insert or Update del agente dado
-                                /// </summary>
-                                /// <param name="agen"></param>
-                                /// <returns></returns>
+        //INSERT + UPDATE
+        /// <summary>
+        /// Insert or Update del agente dado
+        /// </summary>
+        /// <param name="agen"></param>
+        /// <returns></returns>
         //AGENTES:
         public Task<int> SaveAgentesAsync(Agentes agen)
         {
-            if (agen.cod_agente!=0)
+            if (agen.cod_agente != 0)
             {
                 return db.UpdateAsync(agen);
-            }else { return db.InsertAsync(agen); }
+            } else { return db.InsertAsync(agen); }
         }
         //DETALLE_MULTA:
         public Task<int> SaveDetalle_MultaAsync(Detalle_Multa det_multa)
@@ -46,7 +46,7 @@ namespace LenguajesIV_ProjectoFinal.Services
             {
                 return db.UpdateAsync(det_multa);
             }
-            else{ return db.InsertAsync(det_multa); }
+            else { return db.InsertAsync(det_multa); }
         }
         //INFRACCIONES:
         public Task<int> SaveInfraccionesAsync(Infracciones infrac)
@@ -64,7 +64,7 @@ namespace LenguajesIV_ProjectoFinal.Services
             {
                 return db.UpdateAsync(infractores);
             }
-            else{ return db.InsertAsync(infractores); }
+            else { return db.InsertAsync(infractores); }
         }
         //MULTAS:
         public Task<int> SaveMultassAsync(Multas multas)
@@ -74,17 +74,17 @@ namespace LenguajesIV_ProjectoFinal.Services
             {
                 return db.UpdateAsync(multas);
             }
-            else{ return db.InsertAsync(multas); }
+            else { return db.InsertAsync(multas); }
         }
         //UBICACIONES:
         public Task<int> SaveUbicacionesAsync(Ubicaciones ubi)
         {
             //Acá debería hacer el insert/update de cod_multa
-            if (ubi.cod_ubicacion!= 0)
+            if (ubi.cod_ubicacion != 0)
             {
                 return db.UpdateAsync(ubi);
             }
-            else{ return db.InsertAsync(ubi); }
+            else { return db.InsertAsync(ubi); }
         }
         //VEHICULOS:
         public Task<int> SaveVehiculosAsync(Vehiculos vehiculo)
@@ -93,25 +93,15 @@ namespace LenguajesIV_ProjectoFinal.Services
             {
                 return db.UpdateAsync(vehiculo);
             }
-            else{ return db.InsertAsync(vehiculo); }
+            else { return db.InsertAsync(vehiculo); }
         }
 
-                                            //READ:
+        //READ:
         //AGENTES:
-        /// <summary>
-        /// Devuelve TODOS los agentes sin condicion
-        /// </summary>
-        /// <returns>Retorna listado de todos los agentes en la tabla</returns>
         public Task<List<Agentes>> Get_Agentes_Async()
         {
             return db.Table<Agentes>().ToListAsync();
         }
-        /// <summary>
-        /// SELECT * from agente where user=user_dado and password=pass_dada
-        /// </summary>
-        /// <param name="user"></param>
-        /// <param name="password"></param>
-        /// <returns></returns>
         public Task<Agentes> Get_Agentes_byUserandPassword_Async(string user, string password)
         {
             return db.Table<Agentes>().Where(agen => agen.user_agente == user && agen.password_agente == password).FirstOrDefaultAsync();
@@ -119,7 +109,7 @@ namespace LenguajesIV_ProjectoFinal.Services
         //INFRACTORES:
         public Task<Infractores> Get_Infractores_byDNI_Async(string dni)
         {
-            
+
             return db.Table<Infractores>().Where(infractor => infractor.dni_infractor == (dni)).FirstOrDefaultAsync();
         }
         //VEHICULOS:
@@ -127,22 +117,28 @@ namespace LenguajesIV_ProjectoFinal.Services
         {
             return db.Table<Vehiculos>().Where(vehiculo => vehiculo.patente_dominio_vehiculo == patente).FirstOrDefaultAsync();
         }
-        //INFRACTORES:
-        /*
-         
-                 public Task<Infractores> Get_UltInfractorAgregadado_Async()
+        //MultasxAgente:
+        public Task<List<Multas>> Get_MultasxAgente_Async(int _cod_agente)
         {
-            return db.Table<Infractores>().OrderByDescending().FirstOrDefaultAsync();
+            return db.Table<Multas>().Where(multa => multa.cod_agente == _cod_agente).ToListAsync();
         }
-         */
-
+        //InfractorxMulta:
+        public Task<Infractores> Get_InfractorxMulta_Async(int _cod_infractor)
+        {
+            return db.Table<Infractores>().Where(infractor => infractor.cod_infractores == _cod_infractor).FirstOrDefaultAsync();
+        }
+        //VehiculoxMulta:
+        public Task<Vehiculos> Get_VehiculoxMulta_Async(int _cod_vehiculo)
+        {
+            return db.Table<Vehiculos>().Where(vehiculo => vehiculo.cod_vehiculo == _cod_vehiculo).FirstOrDefaultAsync();
+        }
+        //UbicacionxMulta:
+        public Task<Ubicaciones> Get_UbicacionxMulta_Async(int _cod_multa)
+        {
+            return db.Table<Ubicaciones>().Where(ubicaciones => ubicaciones.cod_multa == _cod_multa).FirstOrDefaultAsync();
+        }
 
         //DELETE:
-        /// <summary>
-        /// Eliminar un Agente dado
-        /// </summary>
-        /// <param name="agente"></param>
-        /// <returns>Devuelve...</returns>
         public Task<int> Delete_Agente_async(Agentes agente)
         {
             return db.DeleteAsync(agente);
