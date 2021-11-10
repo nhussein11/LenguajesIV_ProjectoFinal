@@ -136,6 +136,11 @@ namespace LenguajesIV_ProjectoFinal.Services
         {
             return db.Table<Ubicaciones>().Where(ubicaciones => ubicaciones.cod_multa == _cod_multa).FirstOrDefaultAsync();
         }
+        //Cod de la ult multa registrada:
+        public Task<Multas> Get_Cod_UltimaMulta_Async()
+        {
+            return db.Table<Multas>().OrderByDescending(multa => multa.cod_multa).FirstOrDefaultAsync();
+        }
 
         //DELETE:
         public Task<int> Delete_Agente_async(Agentes agente)

@@ -46,12 +46,13 @@ namespace LenguajesIV_ProjectoFinal.Views
             multa_a_insertar.cod_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).cod_vehiculo;
             multa_a_insertar.cod_agente = ((Agentes)Application.Current.Properties["DatosUsuario"]).cod_agente;
 
-            multa_a_insertar.cod_multa = 0; // Esto no va --> se me ahce que lo tenes que insertar sin codigo para que le asigne un autoincremental al entrar en la BD, pero fijate si asi igual  funciona
             /*Se me hace que no esta mostrando el metodo en VerMultas porque no estas registrando ninguna multa*/
             await App.SQLiteDB.SaveMultassAsync(multa_a_insertar);
-
+            int cod_multa_insertada = (await App.SQLiteDB.Get_Cod_UltimaMulta_Async()).cod_multa;
+            
             //Inserto, en caso de ser necesario, los detalles
             foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"]) {
+                detalle.cod_multa = cod_multa_insertada;
                 //Antes de insertar los detalles,ponerles en cod_multa el codigo de la multa que se acaba de registrar
                 await App.SQLiteDB.SaveDetalle_MultaAsync(detalle);
             }
