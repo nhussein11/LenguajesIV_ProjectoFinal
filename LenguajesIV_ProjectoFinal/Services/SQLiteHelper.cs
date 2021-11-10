@@ -69,7 +69,6 @@ namespace LenguajesIV_ProjectoFinal.Services
         //MULTAS:
         public Task<int> SaveMultassAsync(Multas multas)
         {
-            //Acá debería hacer el insert/update de cod_vehiculo, cod_infractor, cod agente
             if (multas.cod_multa != 0)
             {
                 return db.UpdateAsync(multas);

@@ -24,7 +24,7 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         private async void GrabarMulta(object sender, EventArgs e)
         {
-            //Get_Location();
+            
             //Inserto infractor
             if ((bool)Application.Current.Properties["infractor_nuevo"])
             {
@@ -37,18 +37,18 @@ namespace LenguajesIV_ProjectoFinal.Views
             }
             //Inserto la multa
             Multas multa_a_insertar = new Multas();
-            multa_a_insertar = (Multas)Application.Current.Properties["Multa"];
+            multa_a_insertar.lugar_multa = ((Multas)Application.Current.Properties["Multa"]).lugar_multa;
+            multa_a_insertar.hora_multa = ((Multas)Application.Current.Properties["Multa"]).hora_multa;
+            multa_a_insertar.fecha_multa = ((Multas)Application.Current.Properties["Multa"]).fecha_multa;
+            multa_a_insertar.path_dni_infractorXmulta = (string)Application.Current.Properties["path_foto"];
+            //FKs de la multa
             multa_a_insertar.cod_infractor = ((Infractores)Application.Current.Properties["infractor"]).cod_infractores;
             multa_a_insertar.cod_vehiculo = ((Vehiculos)Application.Current.Properties["vehiculo"]).cod_vehiculo;
             multa_a_insertar.cod_agente = ((Agentes)Application.Current.Properties["DatosUsuario"]).cod_agente;
-            multa_a_insertar.path_dni_infractorXmulta = (string)Application.Current.Properties["path_foto"];
-            /*ACA faltaria una mas que sería para el cod_ubicacion, que recien lo vamos a tener cuando veamos lo del mapa*/
 
-            //insertarlas -> devuelve cod_ubicacion -> ponerselo a la multa -> ingresar multa
-
+            multa_a_insertar.cod_multa = 0;
             /*Se me hace que no esta mostrando el metodo en VerMultas porque no estas registrando ninguna multa*/
-
-
+            await App.SQLiteDB.SaveMultassAsync(multa_a_insertar);
 
             //Inserto, en caso de ser necesario, los detalles
             foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"]) {
@@ -56,7 +56,7 @@ namespace LenguajesIV_ProjectoFinal.Views
                 await App.SQLiteDB.SaveDetalle_MultaAsync(detalle);
             }
 
-            await DisplayAlert("Atencion!", "Se guardaron correctamente los datos,se procedera a redactarse un correo al Superior", "OK");
+            await DisplayAlert("Atencion!", "Se guardaron correctamente los datos, se procedera a redactarse un correo al Superior", "OK");
 
             //mail al superior:
             try
@@ -151,4 +151,3 @@ namespace LenguajesIV_ProjectoFinal.Views
         } 
     } 
 }
-        //Nico

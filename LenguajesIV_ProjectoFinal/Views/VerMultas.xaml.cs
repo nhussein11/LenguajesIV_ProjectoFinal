@@ -35,10 +35,7 @@ namespace LenguajesIV_ProjectoFinal.Views
         public async void Cargar_Multas_Realizadas() 
         {
             int cod_agente_activo = ((Agentes)Application.Current.Properties["DatosUsuario"]).cod_agente;
-           
-            
-            
-            //Nico: Metodo para traerse las multas de ese agente
+   
 
             // NO esta trayendo las multas este metodo no lo puedo ver en el debugger porque el return es un oneliner, para mi pasa algo ahi, trata de hacerlo por partes
             //Avisame si hiciste algun cambio en la bd, hay que ver si se esta grabando bien la multa con el codigo del agente el vehiculo y la ubicacion que corresponde 
@@ -78,8 +75,14 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         }
 
-        private async void ActualizarLista(object sender, EventArgs e)
+        private void ActualizarLista(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+<<<<<<< HEAD
+            Cargar_Multas_Realizadas();
+=======
+=======
+>>>>>>> 232c74dddd186f8f286a08ef0d77ed61730ca799
             //multa hardcodeada para probar que se este viendo bien --borrar si necesitas
             ListadoMultasRealizadas.Add(new MultasRealizadas
             {
@@ -99,6 +102,10 @@ namespace LenguajesIV_ProjectoFinal.Views
             Cargar_Multas_Realizadas();
             // esto desp lo ponemos en el constructor de la vista, por ahora hasta que lo arreglemos, queda en el boton 
 
+<<<<<<< HEAD
+>>>>>>> 232c74dddd186f8f286a08ef0d77ed61730ca799
+=======
+>>>>>>> 232c74dddd186f8f286a08ef0d77ed61730ca799
         }
     }
 }
