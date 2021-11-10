@@ -147,6 +147,9 @@ namespace LenguajesIV_ProjectoFinal.Views
                 latitud_ubicacion = this.txtLat.Text,
                 longitud_ubicacion = this.txtLong.Text,
                 cod_multa = ((Multas)Application.Current.Properties["Multa"]).cod_multa
+                //No es este cod multa, creo que es cod_multa_insertada el que tenes que poner 
+                //y luego grabarla en la base de datos
+                //antes de probar nada borra la bd anterior porque deben haver multas sin ubicacion que estan causando el error
             };
 
         } 
