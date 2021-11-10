@@ -21,7 +21,7 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
         }
-        
+
         private async void GrabarMulta(object sender, EventArgs e)
         {
             //Guardo la ubicacion, lo pongo dentro de una funcion por prolijidad nomás pero si queres meterlo aca adentro no pasa nada
@@ -53,7 +53,7 @@ namespace LenguajesIV_ProjectoFinal.Views
                 //Antes de insertar los detalles,ponerles en cod_multa el codigo de la multa que se acaba de registrar
                 await App.SQLiteDB.SaveDetalle_MultaAsync(detalle);
             }
-            
+
             await DisplayAlert("Atencion!", "Se guardaron correctamente los datos", "OK");
 
             //mail al superior:
@@ -97,7 +97,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             Application.Current.Properties["listaDetalles"] = null;
             Application.Current.Properties["DatosUsuario"] = null;
             Application.Current.Properties["path_foto"] = null;
-           // Los entrys tambien los podriamos borrar 
+            // Los entrys tambien los podriamos borrar 
 
         }
 
@@ -134,9 +134,11 @@ namespace LenguajesIV_ProjectoFinal.Views
                 Name = "Tu ubicacion",
                 NavigationMode = NavigationMode.Default
 
-            }) ;
+            });
 
-        }
+        } 
+    } 
+}
 
         //Nico
         //mail_superior_coninfo_multa(multa_a_insertar, (Infractores)Application.Current.Properties["infractor"], (Vehiculos)Application.Current.Properties["vehiculo"], (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"], (Agentes)Application.Current.Properties["DatosUsuario"]);
@@ -165,3 +167,4 @@ namespace LenguajesIV_ProjectoFinal.Views
         }
     }
 }
+        */
