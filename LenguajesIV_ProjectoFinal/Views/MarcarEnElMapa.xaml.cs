@@ -44,8 +44,10 @@ namespace LenguajesIV_ProjectoFinal.Views
             multa_a_insertar.cod_agente = ((Agentes)Application.Current.Properties["DatosUsuario"]).cod_agente;
             multa_a_insertar.path_dni_infractorXmulta = (string)Application.Current.Properties["path_foto"];
             /*ACA faltaria una mas que sería para el cod_ubicacion, que recien lo vamos a tener cuando veamos lo del mapa*/
+
             //Application.Current.Properties["latitud"]
             //Application.Current.Properties["longitud"]
+
             //insertarlas -> devuelve cod_ubicacion -> ponerselo a la multa -> ingresar multa
 
             //Inserto, en caso de ser necesario, los detalles
@@ -98,6 +100,9 @@ namespace LenguajesIV_ProjectoFinal.Views
             Application.Current.Properties["DatosUsuario"] = null;
             Application.Current.Properties["path_foto"] = null;
             // Los entrys tambien los podriamos borrar 
+
+            //Me voy a la pantalla de ver multas
+            await Shell.Current.GoToAsync($"//{nameof(VerMultas)}");
 
         }
 
