@@ -63,6 +63,8 @@ namespace LenguajesIV_ProjectoFinal.Views
         private async void Siguiente_Pantalla(object sender, EventArgs e)
         {
             //Validar que esten ingresados los campos y sean validos
+                    /*Estas cositas las dejemos para el final*/
+
             //Siempre se crea la multa
             Multas multa = new Multas();
 
@@ -76,7 +78,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             Application.Current.Properties["Multa"] = multa;
             try
             {
-                if ((bool)Application.Current.Properties["infractor_nuevo"] == true)
+                if ((bool)Application.Current.Properties["infractor_nuevo"])
                 {
                     Infractores infractor = new Infractores();
                     infractor.apellido_infractor = this.txtapellido.Text;
@@ -86,7 +88,7 @@ namespace LenguajesIV_ProjectoFinal.Views
                     infractor.domicilio_infractor = this.txtdomicilio.Text;
                     Application.Current.Properties["infractor"] = infractor;
                 }
-                if ((bool)Application.Current.Properties["vehiculo_nuevo"] == true)
+                if ((bool)Application.Current.Properties["vehiculo_nuevo"])
                 {
                     Vehiculos vehiculo = new Vehiculos();
                     vehiculo.patente_dominio_vehiculo = this.txtPatente.Text;
@@ -100,9 +102,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             catch (Exception)
             {
                 await DisplayAlert("No validó los datos", "DEBE validar los datos DNI del infractor y PATENTE del vehiculo", "OK");
-                
             }
-                     
         }
     }
 }

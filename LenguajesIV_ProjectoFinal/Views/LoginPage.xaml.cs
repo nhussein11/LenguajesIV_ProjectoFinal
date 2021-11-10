@@ -23,7 +23,5 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             await Shell.Current.GoToAsync($"//{nameof(Registrarse)}");
         }
-
-        
     }
 }
