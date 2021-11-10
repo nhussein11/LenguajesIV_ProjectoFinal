@@ -103,6 +103,44 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         }
 
+        private async void ObtenerUbicacion(object sender, EventArgs e)
+        {
+            Location location = await Geolocation.GetLastKnownLocationAsync();
+            if (location == null)
+            {
+
+                location = await Geolocation.GetLocationAsync(new GeolocationRequest
+                {
+                    DesiredAccuracy = GeolocationAccuracy.Medium,
+                    Timeout = TimeSpan.FromSeconds(30)
+
+                }
+                );
+                this.txtLat.Text = Convert.ToString(location.Latitude);
+                this.txtLong.Text = Convert.ToString(location.Longitude);
+                //para pasar ubicacion a otras paginas
+                Application.Current.Properties["latitud"] = Convert.ToString(location.Latitude);
+                Application.Current.Properties["longitud"] = Convert.ToString(location.Longitude);
+
+
+            }
+            else {
+                this.txtLat.Text = Convert.ToString(location.Latitude);
+                this.txtLong.Text = Convert.ToString(location.Longitude);
+                //para pasar ubicacion a otras paginas
+                Application.Current.Properties["latitud"] = Convert.ToString(location.Latitude);
+                Application.Current.Properties["longitud"] = Convert.ToString(location.Longitude);
+                //await Navigation.PushAsync(new MapaConfirmarUbicacion());
+            }
+            await Map.OpenAsync(Convert.ToDouble(Application.Current.Properties["latitud"]), Convert.ToDouble(Application.Current.Properties["longitud"]), new MapLaunchOptions
+            {
+                Name = "Tu ubicacion",
+                NavigationMode = NavigationMode.Default
+
+            }) ;
+
+        }
+
         //Nico
         //mail_superior_coninfo_multa(multa_a_insertar, (Infractores)Application.Current.Properties["infractor"], (Vehiculos)Application.Current.Properties["vehiculo"], (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"], (Agentes)Application.Current.Properties["DatosUsuario"]);
 

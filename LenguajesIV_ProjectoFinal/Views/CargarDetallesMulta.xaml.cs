@@ -44,7 +44,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             if (ListaDeInfraccionesAgregadas.Count > 0)
             {
                 Application.Current.Properties["listaDetalles"] = ListaDeInfraccionesAgregadas;
-                Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
+                await Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
             }
             else {
                 await DisplayAlert("Atencion!", "Debe agregar al menos una infraccion a la multa", "ok");
