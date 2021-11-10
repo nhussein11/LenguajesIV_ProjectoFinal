@@ -21,6 +21,21 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
         }
+        public async void Get_Location()
+        {
+            Location location = await Geolocation.GetLastKnownLocationAsync();
+            if (location==null)
+            {
+                location = await Geolocation.GetLocationAsync(new GeolocationRequest
+                {
+                    DesiredAccuracy = GeolocationAccuracy.Medium,
+                    Timeout = TimeSpan.FromSeconds(30)
+                });
+            }
+            string location_latitud = location.Latitude.ToString();
+            string location_longitude = location.Longitude.ToString();
+            //Estos últimos dos strings los voy a usar para instanciar una nueva ubicacion y guardar en la bdd
+        }
         private async void GrabarMulta(object sender, EventArgs e)
         {
             //aca van a estar los datos de la localizacion tambien
