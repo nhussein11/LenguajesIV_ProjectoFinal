@@ -140,6 +140,13 @@ namespace LenguajesIV_ProjectoFinal.Views
                 NavigationMode = NavigationMode.Default
 
             });
+            //Yo insertaria aca la ubicacion en la bdd y queda conectado con la multa, por commo hice las tablas: Ubicaciones tiene la FK que refiere a Multas
+            Ubicaciones ubicacionXmulta = new Ubicaciones
+            {
+                latitud_ubicacion = this.txtLat.Text,
+                longitud_ubicacion = this.txtLong.Text,
+                cod_multa = ((Multas)Application.Current.Properties["Multa"]).cod_multa
+            };
 
         } 
     } 
