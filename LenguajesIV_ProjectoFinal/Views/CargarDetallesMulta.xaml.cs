@@ -55,6 +55,8 @@ namespace LenguajesIV_ProjectoFinal.Views
         private async void Agregar_Detalle(object sender, EventArgs e)
         {
             Detalle_Multa detalle = new Detalle_Multa();
+            //Nose si a esto te referis con: "agregar cod multa a detalles antes de grabar" en el HACK
+            detalle.cod_multa = ((Multas)Application.Current.Properties["Multa"]).cod_multa;
 
             detalle.descripcion_infraccion = ((Infracciones)this.InfraccionPicker.SelectedItem).descripcion_infraccion.ToString();
             detalle.cod_infracion = ((Infracciones)this.InfraccionPicker.SelectedItem).cod_infraccion;
