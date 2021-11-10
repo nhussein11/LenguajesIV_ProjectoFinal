@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace LenguajesIV_ProjectoFinal.Views
 {
@@ -34,6 +35,8 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             int cod_agente_activo = ((Agentes)Application.Current.Properties["DatosUsuario"]).cod_agente;
             //Nico: Metodo para traerse las multas de ese agente
+            // No esta trayendo las multas este metodo no l opuedo ver en eldebug,debe ser algo en el return, trata de hacerlo por partes
+            // lo que le cambies ahi seguro lo tenes que cambiar en Get_InfractorxMulta_Async Get_VehiculoxMulta_Async Get_UbicacionxMulta_Async
             List<Multas> lista_multas = await App.SQLiteDB.Get_MultasxAgente_Async(cod_agente_activo);
             foreach (Multas multa in lista_multas)
             {
@@ -52,9 +55,17 @@ namespace LenguajesIV_ProjectoFinal.Views
             }
            
         }
-        private void Abrir_Ubicacion_Multa(object sender, SelectedItemChangedEventArgs e)
+        private async  void Abrir_Ubicacion_Multa(object sender, SelectedItemChangedEventArgs e)
         {
-            // con la lat y long de la multa -> abrir google maps
+            double lat = Convert.ToDouble(((MultasRealizadas)e.SelectedItem).latitud_ubicacion);
+            double lon = Convert.ToDouble(((MultasRealizadas)e.SelectedItem).longitud_ubicacion);
+            await Map.OpenAsync(lat, lon, new MapLaunchOptions
+            {
+                Name = ((MultasRealizadas)e.SelectedItem).lugar_multa,
+                NavigationMode = NavigationMode.Default
+
+            });
+
 
         }
 
