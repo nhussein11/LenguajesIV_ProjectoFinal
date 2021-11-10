@@ -21,11 +21,11 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             Shell.Current.GoToAsync($"//{nameof(TomarFoto)}");
         }
-        
+
         private async void GrabarMulta(object sender, EventArgs e)
         {
             //Guardo la ubicacion, lo pongo dentro de una funcion por prolijidad nomás pero si queres meterlo aca adentro no pasa nada
-            Get_Location();
+            //Get_Location();
             //Inserto infractor
             if ((bool)Application.Current.Properties["infractor_nuevo"])
             {
@@ -44,15 +44,16 @@ namespace LenguajesIV_ProjectoFinal.Views
             multa_a_insertar.cod_agente = ((Agentes)Application.Current.Properties["DatosUsuario"]).cod_agente;
             multa_a_insertar.path_dni_infractorXmulta = (string)Application.Current.Properties["path_foto"];
             /*ACA faltaria una mas que sería para el cod_ubicacion, que recien lo vamos a tener cuando veamos lo del mapa*/
-            //multa_a_insertar.cod_ubicacion
-            //o  al reves: ubicacion_multa.cod_multa = ((Multas)Application.Current.Properties["Multa"]).cod_multa;
+            //Application.Current.Properties["latitud"]
+            //Application.Current.Properties["longitud"]
+            //insertarlas -> devuelve cod_ubicacion -> ponerselo a la multa -> ingresar multa
 
             //Inserto, en caso de ser necesario, los detalles
             foreach (var detalle in (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"]) {
                 //Antes de insertar los detalles,ponerles en cod_multa el codigo de la multa que se acaba de registrar
                 await App.SQLiteDB.SaveDetalle_MultaAsync(detalle);
             }
-            
+
             await DisplayAlert("Atencion!", "Se guardaron correctamente los datos", "OK");
 
             //mail al superior:
@@ -96,13 +97,59 @@ namespace LenguajesIV_ProjectoFinal.Views
             Application.Current.Properties["listaDetalles"] = null;
             Application.Current.Properties["DatosUsuario"] = null;
             Application.Current.Properties["path_foto"] = null;
-           // Los entrys tambien los podriamos borrar 
+            // Los entrys tambien los podriamos borrar 
 
         }
-        public async void Get_Location()
+
+        private async void ObtenerUbicacion(object sender, EventArgs e)
         {
             Location location = await Geolocation.GetLastKnownLocationAsync();
             if (location == null)
+            {
+
+                location = await Geolocation.GetLocationAsync(new GeolocationRequest
+                {
+                    DesiredAccuracy = GeolocationAccuracy.Medium,
+                    Timeout = TimeSpan.FromSeconds(30)
+
+                }
+                );
+                this.txtLat.Text = Convert.ToString(location.Latitude);
+                this.txtLong.Text = Convert.ToString(location.Longitude);
+                //para pasar ubicacion a otras paginas
+                Application.Current.Properties["latitud"] = Convert.ToString(location.Latitude);
+                Application.Current.Properties["longitud"] = Convert.ToString(location.Longitude);
+
+
+            }
+            else {
+                this.txtLat.Text = Convert.ToString(location.Latitude);
+                this.txtLong.Text = Convert.ToString(location.Longitude);
+                //para pasar ubicacion a otras paginas
+                Application.Current.Properties["latitud"] = Convert.ToString(location.Latitude);
+                Application.Current.Properties["longitud"] = Convert.ToString(location.Longitude);
+            }
+            await Map.OpenAsync(Convert.ToDouble(Application.Current.Properties["latitud"]), Convert.ToDouble(Application.Current.Properties["longitud"]), new MapLaunchOptions
+            {
+                Name = "Tu ubicacion",
+                NavigationMode = NavigationMode.Default
+
+            });
+
+        } 
+    } 
+}
+
+        //Nico
+        //mail_superior_coninfo_multa(multa_a_insertar, (Infractores)Application.Current.Properties["infractor"], (Vehiculos)Application.Current.Properties["vehiculo"], (IList<Detalle_Multa>)Application.Current.Properties["listaDetalles"], (Agentes)Application.Current.Properties["DatosUsuario"]);
+
+        /*
+         public void mail_superior_coninfo_multa(Multas multa, Infractores infractor, Vehiculos vehiculo, IList<Detalle_Multa> detalles_multa, Agentes agente) {
+            var renglon = "";
+            foreach (var detalle in detalles_multa) {
+                renglon = renglon + " - " + detalle.descripcion_infraccion;
+            }
+            try
             {
                 location = await Geolocation.GetLocationAsync(new GeolocationRequest
                 {
@@ -120,3 +167,4 @@ namespace LenguajesIV_ProjectoFinal.Views
         }
     }
 }
+        */

@@ -8,7 +8,11 @@
             <Label Text="Marcar Ubicacion en el Mapa" HorizontalOptions="Center" VerticalOptions="Start" FontSize="Medium" FontAttributes="Bold"></Label>
             <!--#region El mapa-->
             <!--#endregion-->
+            <Button Text="Obtener Ubicacion Actual" Margin="0,20,0,0" Clicked="ObtenerUbicacion"  ></Button>
             
+                <Entry IsEnabled="False" x:Name="txtLat" Margin="0,20,0,0"></Entry>
+                <Entry IsEnabled="False" x:Name="txtLong" Margin="0,20,0,0" ></Entry>
+
             <Grid>
                 <Button Text="Atras" HorizontalOptions="Start" Clicked="Atras"  Margin="0,20,0,0"></Button>
                 <Button Text="Confirmar" HorizontalOptions="End" Clicked="GrabarMulta" Margin="0,20,0,0"></Button>
