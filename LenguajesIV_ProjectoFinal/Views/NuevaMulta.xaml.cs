@@ -62,9 +62,6 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         private async void Siguiente_Pantalla(object sender, EventArgs e)
         {
-            //Validar que esten ingresados los campos y sean validos
-                    /*Estas cositas las dejemos para el final*/
-
             //Siempre se crea la multa
             Multas multa = new Multas();
 
