@@ -55,31 +55,40 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         private async void Agregar_Detalle(object sender, EventArgs e)
         {
-            Detalle_Multa detalle = new Detalle_Multa();
-            //Nose si a esto te referis con: "agregar cod multa a detalles antes de grabar" en el HACK
-            //  A la multa cuando la grabas en la base de datos, te devuelve un codigo, ese es el codigo autoincremental
-            // lo que hay que hacer es En MarcarEnElMapa, grabar la multa, el codigo que te devuelva el metodo, ponerselos al detalle en cod_multa ANTES  de grabarlos
-            detalle.cod_multa = ((Multas)Application.Current.Properties["Multa"]).cod_multa; //El cod multa de este objeto siempre va a ser 0, porque nunca le definiste uno, al momento de grabarlo en la bd SIN EL COD 0, el metodo de grabar te devuelve con que valor lo grabo en ese campo, ese usas como codigo
+            try
+            {
+                Detalle_Multa detalle = new Detalle_Multa();
+                //Nose si a esto te referis con: "agregar cod multa a detalles antes de grabar" en el HACK
+                //  A la multa cuando la grabas en la base de datos, te devuelve un codigo, ese es el codigo autoincremental
+                // lo que hay que hacer es En MarcarEnElMapa, grabar la multa, el codigo que te devuelva el metodo, ponerselos al detalle en cod_multa ANTES  de grabarlos
+                detalle.cod_multa = ((Multas)Application.Current.Properties["Multa"]).cod_multa; //El cod multa de este objeto siempre va a ser 0, porque nunca le definiste uno, al momento de grabarlo en la bd SIN EL COD 0, el metodo de grabar te devuelve con que valor lo grabo en ese campo, ese usas como codigo
 
-            detalle.descripcion_infraccion = ((Infracciones)this.InfraccionPicker.SelectedItem).descripcion_infraccion.ToString();
-            detalle.cod_infracion = ((Infracciones)this.InfraccionPicker.SelectedItem).cod_infraccion;
-            detalle.subtotal_detalle_multa = Convert.ToInt32(this.txtPrecio.Text);
-            detalle.testimonio_agente = this.txtTestimonio.Text;
-            detalle.observacion_detalle_multa = this.txtObservaciones.Text;
-            //el cod de la multa se lo agregamos cuando insertemos la multa en la BD y nos devuelva el codigo!
-            
-            //agrego detalle a la lista
-            ListaDeInfraccionesAgregadas.Add(detalle);
-            
-            //reseteo campos
-            this.InfraccionPicker.SelectedItem = null;
-            this.txtPrecio.Text = "";
-            this.txtObservaciones.Text = "";
-            this.txtTestimonio.Text = "";
+                detalle.descripcion_infraccion = ((Infracciones)this.InfraccionPicker.SelectedItem).descripcion_infraccion.ToString();
+                detalle.cod_infracion = ((Infracciones)this.InfraccionPicker.SelectedItem).cod_infraccion;
+                detalle.subtotal_detalle_multa = Convert.ToInt32(this.txtPrecio.Text);
+                detalle.testimonio_agente = this.txtTestimonio.Text;
+                detalle.observacion_detalle_multa = this.txtObservaciones.Text;
+                //el cod de la multa se lo agregamos cuando insertemos la multa en la BD y nos devuelva el codigo!
 
-            await DisplayAlert("Correcto", "Se agrego el detalle a la lista", "ok");
-            await Shell.Current.GoToAsync($"//{nameof(NuevaMulta)}");
-            await Shell.Current.GoToAsync($"//{nameof(CargarDetallesMulta)}"); //dios me perdone por la chanchada
+                //agrego detalle a la lista
+                ListaDeInfraccionesAgregadas.Add(detalle);
+
+                //reseteo campos
+                this.InfraccionPicker.SelectedItem = null;
+                this.txtPrecio.Text = "";
+                this.txtObservaciones.Text = "";
+                this.txtTestimonio.Text = "";
+
+                await DisplayAlert("Correcto", "Se agrego el detalle a la lista", "ok");
+                await Shell.Current.GoToAsync($"//{nameof(NuevaMulta)}");
+                await Shell.Current.GoToAsync($"//{nameof(CargarDetallesMulta)}"); //dios me perdone por la chanchada
+            }
+            catch (Exception)
+            {
+
+                await DisplayAlert("Advertencia!", "Complete todos los campos antes de continuar", "OK");
+            }
+            
 
 
         }
