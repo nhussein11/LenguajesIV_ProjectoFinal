@@ -75,14 +75,9 @@ namespace LenguajesIV_ProjectoFinal.Views
 
         }
 
-        private void ActualizarLista(object sender, EventArgs e)
+        private async void ActualizarLista(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
             Cargar_Multas_Realizadas();
-=======
-=======
->>>>>>> 232c74dddd186f8f286a08ef0d77ed61730ca799
             //multa hardcodeada para probar que se este viendo bien --borrar si necesitas
             ListadoMultasRealizadas.Add(new MultasRealizadas
             {
@@ -101,11 +96,6 @@ namespace LenguajesIV_ProjectoFinal.Views
             await Shell.Current.GoToAsync($"//{nameof(VerMultas)}");
             Cargar_Multas_Realizadas();
             // esto desp lo ponemos en el constructor de la vista, por ahora hasta que lo arreglemos, queda en el boton 
-
-<<<<<<< HEAD
->>>>>>> 232c74dddd186f8f286a08ef0d77ed61730ca799
-=======
->>>>>>> 232c74dddd186f8f286a08ef0d77ed61730ca799
         }
     }
 }
