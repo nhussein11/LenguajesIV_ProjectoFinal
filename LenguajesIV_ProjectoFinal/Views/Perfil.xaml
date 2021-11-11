@@ -7,7 +7,7 @@
         <ScrollView>
             <StackLayout Padding="25" VerticalOptions="Center"  HorizontalOptions="FillAndExpand">
                 <Frame x:Name="circleFrame" CornerRadius="30" HasShadow="False" Padding="0" Margin="0,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Black" IsClippedToBounds="True" BorderColor="Black">
-                    <Image Source="ucasal_logo.jpg" HeightRequest="80" WidthRequest="80" Aspect="AspectFit"></Image>
+                    <Image Source="PoliciaPic.jpg" HeightRequest="80" WidthRequest="80" Aspect="AspectFit"></Image>
                 </Frame>
                 <Label Text="Datos de Inicio de Sesion" HorizontalOptions="Start"  FontSize="Medium" FontAttributes="Bold"></Label>
 
