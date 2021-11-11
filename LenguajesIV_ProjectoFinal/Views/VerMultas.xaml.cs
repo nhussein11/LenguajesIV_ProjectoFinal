@@ -21,16 +21,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             InitializeComponent();
             ListadoMultasRealizadas = new List<MultasRealizadas>();
             BindingContext = this;
-            //Nico: Metodo para traerse las multas de ese agente
-            //traerse el infractor de una multa
-            //traerse el vehiculo de una multa
-            //traerse la ubicacion de una multa
-            //NO hace falta los detalles 
-            //crear Obj multa con esos datos y meterlo en ListadoMultasRealizadas
-            //Debe ser asincrónico --> me llevo todo a una función:
             
-
-
         }
         public async void Cargar_Multas_Realizadas() 
         {
@@ -71,19 +62,18 @@ namespace LenguajesIV_ProjectoFinal.Views
             {
                 Name = ((MultasRealizadas)e.SelectedItem).lugar_multa,
                 NavigationMode = NavigationMode.Default
-
             });
-
-
         }
-
-        public   async void ActualizarLista(object sender, EventArgs e)
+        //Aca deberiammos hacer un ListadoMultasRealizadas.Clear() en algun momento pero no te quiero tocar tus Shell.Current.GoToAsync ...
+        //Es para que si el agente toca más de una vez la lista, no la duplique ni triplique ni asi, deberia cagar solo las existentes y no las existentes 2 veces
+        public async   void ActualizarLista(object sender, EventArgs e)
         {
+            //this.ListadoMultasRealizadas.Clear();
             Cargar_Multas_Realizadas();
             await Shell.Current.GoToAsync($"//{nameof(Perfil)}"); //old but gold truco de "actualizar" vista
             await Shell.Current.GoToAsync($"//{nameof(VerMultas)}");
             
-            // esto desp lo ponemos en el constructor de la vista, por ahora hasta que lo arreglemos, queda en el boton 
+          
         }
     }
 }

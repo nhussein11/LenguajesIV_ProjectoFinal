@@ -5,7 +5,7 @@
              Background="#F5E1C9">
     <ContentPage.Content>
         <StackLayout Padding="25"   HorizontalOptions="FillAndExpand">
-            <Label Text="Comunicarse con Superior" HorizontalOptions="Center"  FontSize="Medium" FontAttributes="Bold"></Label>
+            <Label Text="Comunicarse con un Superior" HorizontalOptions="Center"  FontSize="Medium" FontAttributes="Bold"></Label>
 
 
             <Grid>

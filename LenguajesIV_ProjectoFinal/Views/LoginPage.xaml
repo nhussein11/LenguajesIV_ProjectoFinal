@@ -32,7 +32,7 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Registrase"></TapGestureRecognizer>
                 </Label.GestureRecognizers>
             </Label>
-            <Label Text="Powered by UCASAL" HorizontalOptions="Center" Margin="0,50,0,0"></Label>
+            <Label Text="Powered by UCASAL" HorizontalOptions="Center" Margin="0,40,0,0"></Label>
             <Frame  CornerRadius="30" HasShadow="False" Padding="0" Margin="0,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Black" IsClippedToBounds="True" BorderColor="Black">
                 <Image Source="ucasal_logo.jpg" WidthRequest="40" HeightRequest="40"></Image>
             </Frame>

@@ -84,14 +84,14 @@
     <FlyoutItem Title="Registrarse"  FlyoutItemIsVisible="False">
         <ShellContent Route="Registrarse"  ContentTemplate="{DataTemplate local:Registrarse}"/>
     </FlyoutItem>
+    <FlyoutItem Title="Ver Perfil" Icon="icon_feed.png">
+        <ShellContent Route="Perfil" ContentTemplate="{DataTemplate local:Perfil}"/>
+    </FlyoutItem>
     <FlyoutItem Title="Nueva Multa" Icon="icon_feed.png">
         <ShellContent Route="NuevaMulta" ContentTemplate="{DataTemplate local:NuevaMulta}" />
     </FlyoutItem>
     <FlyoutItem Title="Ver Multas"  FlyoutItemIsVisible="False">
         <ShellContent Route="CargarDetallesMulta" ContentTemplate="{DataTemplate local:CargarDetallesMulta}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Ver Perfil" Icon="icon_feed.png">
-        <ShellContent Route="Perfil" ContentTemplate="{DataTemplate local:Perfil}"/>
     </FlyoutItem>
     <FlyoutItem Title="Comunicarse con Superior" Icon="icon_feed.png">
         <ShellContent Route="ComunicarseConSuperior"  ContentTemplate="{DataTemplate local:ComunicarseConSuperior}"/>
