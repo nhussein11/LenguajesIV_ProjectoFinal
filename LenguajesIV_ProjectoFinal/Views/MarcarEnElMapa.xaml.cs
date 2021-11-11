@@ -95,8 +95,11 @@ namespace LenguajesIV_ProjectoFinal.Views
             }
 
 
-            //limpiar variables de Properties 
-            Application.Current.Properties["infractor_nuevo"] = false;
+            //Comento esto porque estaba dando un error
+            //al cargar nueva multa -> toda accion que realizabas despues tiraba error de instancia nula -> seguro es por esto 
+            /*
+             
+             Application.Current.Properties["infractor_nuevo"] = false;
             Application.Current.Properties["vehiculo_nuevo"] = false;
             Application.Current.Properties["infractor"] = null;
             Application.Current.Properties["vehiculo"] = null;
@@ -104,7 +107,8 @@ namespace LenguajesIV_ProjectoFinal.Views
             Application.Current.Properties["listaDetalles"] = null;
             Application.Current.Properties["DatosUsuario"] = null;
             Application.Current.Properties["path_foto"] = null;
-            // Los entrys tambien los podriamos borrar 
+             
+             */
 
             //Me voy a la pantalla de ver multas
             await Shell.Current.GoToAsync($"//{nameof(VerMultas)}");

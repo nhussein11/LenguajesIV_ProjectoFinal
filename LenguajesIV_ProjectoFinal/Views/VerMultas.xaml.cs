@@ -21,7 +21,7 @@ namespace LenguajesIV_ProjectoFinal.Views
             InitializeComponent();
             ListadoMultasRealizadas = new List<MultasRealizadas>();
             BindingContext = this;
-            
+
         }
         public async void Cargar_Multas_Realizadas() 
         {
@@ -38,7 +38,6 @@ namespace LenguajesIV_ProjectoFinal.Views
                 string fecha_multa = multa.fecha_multa;
                 string latitud_ubicacion = (await App.SQLiteDB.Get_UbicacionxMulta_Async(multa.cod_multa)).latitud_ubicacion; // aca esta fallando
                 string lugar_multa = multa.lugar_multa;
-                /*Falla en las ubicaciones, las estas grabando en la bd? con el cod de la multa? el error que tira es porque devuevle null y no sabe a donde ir a buscar la propiedad de la latitud/longitud*/
                MultasRealizadas multaRealizada = new MultasRealizadas
                 {
                     nombre_agente = nombre_agente,
@@ -64,12 +63,11 @@ namespace LenguajesIV_ProjectoFinal.Views
                 NavigationMode = NavigationMode.Default
             });
         }
-        //Aca deberiammos hacer un ListadoMultasRealizadas.Clear() en algun momento pero no te quiero tocar tus Shell.Current.GoToAsync ...
-        //Es para que si el agente toca más de una vez la lista, no la duplique ni triplique ni asi, deberia cagar solo las existentes y no las existentes 2 veces
-        public async   void ActualizarLista(object sender, EventArgs e)
+        public async void ActualizarLista(object sender, EventArgs e)
         {
-            //this.ListadoMultasRealizadas.Clear();
+            this.ListadoMultasRealizadas.Clear();
             Cargar_Multas_Realizadas();
+            await DisplayAlert("Correcto!", "La lista se ha actualizado Carrectamente", "OK");
             await Shell.Current.GoToAsync($"//{nameof(Perfil)}"); //old but gold truco de "actualizar" vista
             await Shell.Current.GoToAsync($"//{nameof(VerMultas)}");
             
