@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="25" VerticalOptions="Center"  HorizontalOptions="FillAndExpand">
-            <Label Text="Terminal de Gestion de multas" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,20" FontAttributes="Bold"></Label>
+            <Label Text="Terminal de Gestion de Multas" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,20" FontAttributes="Bold"></Label>
             <Frame x:Name="circleFrame" CornerRadius="30" HasShadow="False" Padding="0" Margin="0,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Black" IsClippedToBounds="True" BorderColor="Black">
                 <Image Source="SaltaLogo.jpg" WidthRequest="120" HeightRequest="120"></Image>
             </Frame>
