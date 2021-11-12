@@ -67,7 +67,7 @@ namespace LenguajesIV_ProjectoFinal.Views
         {
             this.ListadoMultasRealizadas.Clear();
             Cargar_Multas_Realizadas();
-            await DisplayAlert("Correcto!", "La lista se ha actualizado Carrectamente", "OK");
+            await DisplayAlert("¡Correcto!", "La lista se ha actualizado correctamente", "OK");
             await Shell.Current.GoToAsync($"//{nameof(Perfil)}"); //old but gold truco de "actualizar" vista
             await Shell.Current.GoToAsync($"//{nameof(VerMultas)}");
             
