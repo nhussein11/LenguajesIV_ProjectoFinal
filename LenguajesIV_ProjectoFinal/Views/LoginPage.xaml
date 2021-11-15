@@ -20,7 +20,7 @@
             <Button VerticalOptions="Center"
                 BorderWidth="1.5"
                 CornerRadius="50"
-                Margin="0,20,0,0" Text="Inciar Sesion" Command="{Binding IniciarSesionCommand}" />
+                Margin="0,20,0,0" Text="Iniciar Sesion" Command="{Binding IniciarSesionCommand}" />
             <Label HorizontalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
