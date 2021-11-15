@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LenguajesIV_ProjectoFinal.Views.AboutPage"
              xmlns:vm="clr-namespace:LenguajesIV_ProjectoFinal.ViewModels"
+             Background="#F5E1C9"
              Title="{Binding Title}">
     
     <ContentPage.BindingContext>
@@ -11,7 +12,7 @@
     
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="Accent">#F5E1C9</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -22,29 +23,26 @@
         </Grid.RowDefinitions>
         <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                <ContentView Padding="0,20,0,20" VerticalOptions="FillAndExpand" >
+                    <Frame x:Name="circleFrame" CornerRadius="30" HasShadow="False" Padding="0" Margin="0,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Black" IsClippedToBounds="True" BorderColor="Black">
+                        <Image Source="SaltaLogo.jpg" VerticalOptions="Center"  />
+                    </Frame>
                 </ContentView>
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Start developing now" FontSize="Title"/>
-                <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0"/>
-                <Label FontSize="16" Padding="0,24,0,0">
+                <Label Text="Bienvenido Agente" FontSize="Title" FontAttributes="Bold"/>
+                <Label Text="A travez del menu desplegable uested podra acceder a todas las funcionalidades de esta aplicacion. Cree nuevas multas,revise historiales y hasta consulte a sus superiores.Todo desde el mismo lugar!" FontSize="16" Padding="0,0,0,0"/>
+                <Label FontSize="16" Padding="0,24,0,0" Margin="0,110,0,0" HorizontalOptions="Center" VerticalOptions="End">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Learn more at "/>
-                                <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                                <Span Text="Ya no sera necesario el uso de papeles" FontAttributes="Bold"/>
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button Margin="0,10,0,0" Text="Learn more"
-                        Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
             </StackLayout>
         </ScrollView>
     </Grid>

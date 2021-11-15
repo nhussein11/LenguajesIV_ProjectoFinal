@@ -66,7 +66,7 @@ namespace LenguajesIV_ProjectoFinal.ViewModels
                     Application.Current.Properties["usuario"] = this.usuario;
                     Application.Current.Properties["contrasena"] = this.contraseña;
                     Application.Current.Properties["isLogged"] = true;
-                    await Shell.Current.GoToAsync($"//{nameof(Perfil)}");
+                    await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
 
                 }
                 else {

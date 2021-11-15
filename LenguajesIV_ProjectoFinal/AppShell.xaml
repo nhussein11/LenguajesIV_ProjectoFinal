@@ -81,6 +81,9 @@
     <FlyoutItem Title="Login"  FlyoutItemIsVisible="False">
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Inicio"  FlyoutItemIsVisible="True" Icon="icon_feed.png">
+        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="Registrarse"  FlyoutItemIsVisible="False">
         <ShellContent Route="Registrarse"  ContentTemplate="{DataTemplate local:Registrarse}"/>
     </FlyoutItem>
