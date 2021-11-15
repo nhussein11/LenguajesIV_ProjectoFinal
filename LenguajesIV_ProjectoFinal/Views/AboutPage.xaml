@@ -31,14 +31,14 @@
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Bienvenido Agente" FontSize="Title" FontAttributes="Bold"/>
-                <Label Text="A travez del menu desplegable uested podra acceder a todas las funcionalidades de esta aplicacion. Cree nuevas multas,revise historiales y hasta consulte a sus superiores.Todo desde el mismo lugar!" FontSize="16" Padding="0,0,0,0"/>
-                <Label FontSize="16" Padding="0,24,0,0" Margin="0,110,0,0" HorizontalOptions="Center" VerticalOptions="End">
+            <StackLayout Orientation="Vertical" Padding="20,24,30,24" Spacing="20">
+                <Label Text="¡Bienvenido Agente!" FontSize="Title" FontAttributes="Bold" HorizontalOptions="Center" />
+                <Label Text="A través del menu desplegable usted podrá acceder a todas las funcionalidades de esta aplicación. Cree nuevas multas, revise historiales y hasta consulte a sus superiores en caso de que lo necesite. Todo desde el mismo lugar!" FontSize="16" Padding="0,0,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                <Label FontSize="16" Padding="0,10,0,0" Margin="10,0,0,0" HorizontalOptions="Center" VerticalOptions="End">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Ya no sera necesario el uso de papeles" FontAttributes="Bold"/>
+                                <Span Text="YA NO SERÁ NECESARIO EL USO DE PAPELES" FontAttributes="Bold" TextDecorations="Underline" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
