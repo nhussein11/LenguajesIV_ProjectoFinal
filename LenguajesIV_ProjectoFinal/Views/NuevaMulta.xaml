@@ -60,11 +60,11 @@
                 <Label Text="Datos de la Multa" FontSize="Medium" FontAttributes="Bold"></Label>
                 <Grid>
                     <Label Text="Fecha" FontAttributes="Bold"></Label>
-                    <DatePicker Margin="0,20,0,0" x:Name="FechaPicker"></DatePicker>
+                    <DatePicker Margin="0,20,0,0" x:Name="FechaPicker" TextColor="#38404b"></DatePicker>
                 </Grid>
                 <Grid>
                     <Label Text="Hora" FontAttributes="Bold"></Label>
-                    <TimePicker Format="T" x:Name="HoraPicker" Margin="0,20,0,0"></TimePicker>
+                    <TimePicker Format="T" x:Name="HoraPicker" Margin="0,20,0,0" TextColor="#38404b"></TimePicker>
                 </Grid>
                 <Grid>
                     <Label Text="Lugar del Hecho" FontAttributes="Bold"></Label>
